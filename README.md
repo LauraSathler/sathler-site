@@ -134,8 +134,8 @@
       <h2>Contato</h2>
       <p class="small">Preferências de contato:</p>
       <p>
-        <a class="btn" href="mailto:seuemail@sathler.com.br">📧 Enviar e-mail</a>
-        <a class="btn" href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn" href="mailto:Laurasathler@sathler.com.br">📧 Enviar e-mail</a>
+        <a class="btn" href="https://wa.me/5531991593800" target="_blank" rel="noopener">💬 WhatsApp</a>
       </p>
       <p class="small">Substitua o e-mail e o número acima pelos seus.</p>
     </section>
