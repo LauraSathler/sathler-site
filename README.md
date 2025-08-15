@@ -3,46 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
-  <meta name="description" content="Psicoterapia humanista-existencial 100% online para adolescentes e adultos. Ansiedade, vazio existencial, estresse e burnout. Agende sua sessão com Laura Sathler, CRP 04/30866." />
-  <meta name="theme-color" content="#f6efe9" />
+  <title>Laura Sathler | Psicóloga (CRP 04/30866) · Atendimento online</title>
+  <meta name="description" content="Psicoterapia humanista-existencial 100% online para adolescentes e adultos. Ansiedade, vazio existencial, estresse e burnout. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <link rel="icon" type="image/webp" href="laura-avatar-512.webp" />
+
   <style>
-    :root {
+    /* ========= Design tokens ========= */
+    :root{
       --bg: #f6efe9;
-      --text: #2b2b2b;
-      --muted: #6b6b6b;
-      --card: #ffffff;
-      --accent: #79a6a3;
-      --accent-2: #e2d6cc;
-      --shadow: 0 10px 25px rgba(0,0,0,.08);
-      --radius: 18px;
+      --bg-2:#fbf8f5;
+      --card:#ffffff;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --accent:#79a6a3;
+      --accent-2:#e2d6cc;
+      --radius:18px;
+      --shadow: 0 10px 24px rgba(0,0,0,.08);
+      --maxw: 1080px;
+      --space-1: .5rem;
+      --space-2: .75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 3rem;
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
-    h1, h2, h3 { margin: 0 0 .5rem; line-height: 1.2; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
-    header { position: sticky; top: 0; background: rgba(246,239,233,.9); backdrop-filter: saturate(180%) blur(6px); border-bottom: 1px solid #eadfd6; z-index: 10; }
-    nav ul { display: flex; gap: 1rem; list-style: none; padding: .8rem 0; margin: 0; }
-    nav a { font-weight: 600; padding: .3rem .5rem; border-radius: 10px; }
-    nav a:hover { background: var(--accent-2); text-decoration: none; }
-    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center; padding: 3rem 0; }
-    .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: .8rem 1rem; border-radius: 12px; font-weight: 700; box-shadow: var(--shadow); }
-    .btn-primary:hover { filter: brightness(.95); text-decoration: none; }
-    .card { background: var(--card); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
-    .grid-hero-img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 3 / 2; object-fit: cover; }
-    .portrait { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); object-fit: cover; }
-    .notice { font-size: .95rem; color: var(--muted); }
-    footer { padding: 2rem 0; border-top: 1px solid #eadfd6; color: var(--muted); text-align: center; }
-    @media (max-width: 900px) { .hero, .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ========= Reset + base ========= */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: linear-gradient(180deg,var(--bg),var(--bg-2) 40%,var(--bg) 100%);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3{line-height:1.2;margin:0 0 var(--space-2)}
+    h1{font-size:clamp(1.8rem, 3.5vw, 2.6rem)}
+    h2{font-size:clamp(1.4rem, 3vw, 2rem)}
+    h3{font-size:clamp(1.1rem, 2.2vw, 1.25rem)}
+    p{margin:0 0 var(--space-3)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{width:min(var(--maxw),92vw);margin-inline:auto}
+
+    /* ========= Header / Nav ========= */
+    header{
+      position:sticky; top:0; z-index:10;
+      background: rgba(246,239,233,.85);
+      backdrop-filter: saturate(160%) blur(8px);
+      border-bottom:1px solid #eadfd6;
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: .7rem 0;
+    }
+    .brand{
+      display:flex; gap:.75rem; align-items:center; font-weight:700;
+    }
+    .brand .logo{
+      width:34px;height:34px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent) 0, #8eb8b5 35%, #9cc3bf 60%, #bfd8d6 100%);
+      box-shadow:var(--shadow);
+      flex:0 0 34px;
+    }
+    nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
+    nav a{display:inline-block;padding:.35rem .55rem;border-radius:10px;font-weight:600}
+    nav a:hover{background:var(--accent-2);text-decoration:none}
+
+    /* ========= Sections ========= */
+    section{padding: var(--space-6) 0}
+    .card{
+      background:var(--card); border:1px solid #eee4da;
+      border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--space-4);
+    }
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items:center}
+    .grid-2.reverse{grid-template-columns: 1fr 1fr}
+    .grid-3{display:grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3)}
+    .img-cover{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .portrait{width:100%;height:auto;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .muted{color:var(--muted);font-size:.95rem}
+
+    /* ========= Hero ========= */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-4); align-items:center; padding: var(--space-6) 0}
+    .kicker{color:var(--muted); margin-bottom:var(--space-2)}
+    .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:var(--space-2)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:.4rem;padding:.85rem 1rem;border-radius:12px;font-weight:700;border:1px solid transparent;
+      box-shadow:var(--shadow); cursor:pointer;
+    }
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{filter:brightness(.95);text-decoration:none}
+    .btn-ghost{background:transparent;border-color:#d8ccc2;color:#433d37}
+
+    /* ========= Pills ========= */
+    .pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:var(--space-2)}
+    .pill{font-size:.92rem; padding:.35rem .6rem; border-radius:999px; background:#edf5f4; border:1px solid #d6ebe9}
+
+    /* ========= Footer ========= */
+    footer{padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center}
+
+    /* ========= Responsive ========= */
+    @media (max-width: 900px){
+      .hero, .grid-2, .grid-2.reverse{grid-template-columns: 1fr}
+      nav ul{gap:.4rem}
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="container">
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <div>Laura Sathler</div>
+          <small class="muted">Psicóloga · CRP 04/30866 · Atendimento online</small>
+        </div>
+      </div>
       <nav aria-label="principal">
         <ul>
           <li><a href="#inicio">Início</a></li>
@@ -54,73 +136,9 @@
     </div>
   </header>
 
-  <main class="container">
+  <main>
     <!-- HERO -->
-    <section id="inicio" class="hero">
+    <section id="inicio" class="container hero">
       <div>
-        <h1>Psicoterapia humanista‑existencial · 100% online</h1>
-        <p>Espaço de acolhimento, presença e reconexão com você. Atendo adolescentes e adultos com ética, sigilo e linguagem acessível.</p>
-        <p><a href="https://wa.me/5531991593800" class="btn-primary" target="_blank" rel="noopener">Agendar sessão no WhatsApp</a></p>
-      </div>
-      <img class="grid-hero-img" src="hero-banner-1200x800.webp" alt="Banner suave em tons pastéis" width="1200" height="800" loading="eager" />
-    </section>
-
-    <!-- SOBRE -->
-    <section id="sobre" class="grid-2">
-      <div>
-        <img class="portrait" src="laura-portrait-960x1200.webp" alt="Foto de Laura Sathler" width="960" height="1200" loading="lazy" />
-      </div>
-      <div class="card">
-        <h2>Sobre mim</h2>
-        <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com <strong>mais de 10 anos de experiência clínica</strong>. Formada pela PUC Minas e com especialização em <strong>avaliação e diagnóstico psicológico</strong>, atuo com base na <strong>abordagem humanista‑existencial</strong>.</p>
-        <p>Atendo <strong>exclusivamente online</strong>, oferecendo um espaço seguro e acolhedor para lidar com <em>ansiedade</em>, <em>tristeza profunda</em>, <em>vazio existencial</em>, <em>estresse e burnout</em>, <em>autoestima</em> e <em>relacionamentos</em>.</p>
-        <p class="notice">Sessões de 50 minutos · Frequência geralmente semanal · Plataforma segura · Sigilo profissional.</p>
-      </div>
-    </section>
-
-    <!-- ATENDIMENTO -->
-    <section id="atendimento" class="grid-2" style="margin-top:2rem;">
-      <div class="card">
-        <h2>Áreas de atendimento</h2>
-        <p>Ansiedade, vazio existencial, burnout, autoconhecimento, autoestima, luto e relacionamentos. Para <strong>adolescentes</strong> (a partir de 14 anos) e <strong>adultos</strong>.</p>
-        <p class="notice">Quando buscar terapia? Se você sente que vive no automático, convive com ansiedade ou está esgotada(o) pelo trabalho, a terapia pode ser o primeiro passo para reconectar-se a si mesma(o).</p>
-      </div>
-      <img class="grid-hero-img" src="therapy-elements-1200x800.webp" alt="Elementos visuais de atendimento em tons pastéis" width="1200" height="800" loading="lazy" />
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato" class="grid-2" style="margin-top:2rem;">
-      <div class="card">
-        <h2>Agende sua sessão</h2>
-        <p>
-          <strong>WhatsApp:</strong> <a href="https://wa.me/5531991593800" target="_blank" rel="noopener">Enviar mensagem</a><br/>
-          <strong>E‑mail:</strong> <a href="mailto:Laurasathler@yahoo.com.br">Laurasathler@yahoo.com.br</a><br/>
-          <strong>Telefone:</strong> +55 31 99159‑3800
-        </p>
-        <p class="notice">Ao entrar em contato, você concorda com o uso das informações estritamente para retorno e agendamento.</p>
-      </div>
-      <div class="card">
-        <h2>Mensagem rápida</h2>
-        <form action="mailto:Laurasathler@yahoo.com.br" method="post" enctype="text/plain">
-          <label for="nome">Nome</label>
-          <input id="nome" name="Nome" type="text" required style="width:100%;padding:.7rem;border:1px solid #e0d6cd;border-radius:10px;margin:.3rem 0 1rem;" />
-          <label for="email">E‑mail</label>
-          <input id="email" name="Email" type="email" required style="width:100%;padding:.7rem;border:1px solid #e0d6cd;border-radius:10px;margin:.3rem 0 1rem;" />
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="Mensagem" rows="5" required style="width:100%;padding:.7rem;border:1px solid #e0d6cd;border-radius:10px;margin:.3rem 0 1rem;"></textarea>
-          <button class="btn-primary" type="submit">Enviar</button>
-        </form>
-        <p class="notice">*Este formulário usa o seu aplicativo de e‑mail para enviar a mensagem. Se preferir, utilize o WhatsApp.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866 · 100% online
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+        <div class="kicker">Psicoterapia humanista‑existencial</div>
+        <h1>Espaço de acolhimento, presença e reconexão
