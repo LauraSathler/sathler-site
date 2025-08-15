@@ -4,15 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
-  <meta name="description" content="Psicoterapia humanista-existencial para cuidado emocional, autoconhecimento e qualidade de vida. Agende sua sessão com Laura Sathler, CRP 04/30866." />
-  <link rel="icon" href="454AF7DC-6160-438E-B2BA-1515617430DB.png" type="image/png" />
+  <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866." />
+  <link rel="icon" href="laura-avatar-512.webp" type="image/webp" />
   <style>
-    :root{ --bg:#f6efe9;--bg2:#fbf8f5;--card:#ffffff;--text:#2b2b2b;--muted:#6b6b6b;--accent:#79a6a3;--accent-2:#e2d6cc;--radius:18px;--shadow:0 10px 24px rgba(0,0,0,.08);--maxw:1080px;--s1:.5rem;--s2:.75rem;--s3:1rem;--s4:1.5rem;--s5:2rem;--s6:3rem }
+    :root{
+      --bg:#f6efe9; --bg2:#fbf8f5; --card:#ffffff; --text:#2b2b2b; --muted:#6b6b6b;
+      --accent:#79a6a3; --accent-2:#e2d6cc; --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --maxw:1080px; --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem; --s5:2rem; --s6:3rem;
+    }
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    h1,h2,h3{line-height:1.2;margin:0 0 var(--s2)} h1{font-size:clamp(1.8rem,3.5vw,2.6rem)} h2{font-size:clamp(1.4rem,3vw,2rem)} h3{font-size:clamp(1.1rem,2.2vw,1.25rem)} p{margin:0 0 var(--s3)}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    body{
+      margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);
+      line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3{line-height:1.2;margin:0 0 var(--s2)}
+    h1{font-size:clamp(1.8rem,3.5vw,2.6rem)} h2{font-size:clamp(1.4rem,3vw,2rem)} h3{font-size:clamp(1.1rem,2.2vw,1.25rem)}
+    p{margin:0 0 var(--s3)} a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
     header{position:sticky;top:0;z-index:10;background:rgba(246,239,233,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eadfd6}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
@@ -25,23 +35,26 @@
     nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
     nav a{display:inline-block;padding:.35rem .55rem;border-radius:10px;font-weight:600}
     nav a:hover{background:var(--accent-2);text-decoration:none}
+
     section{padding:var(--s6) 0}
     .card{background:var(--card);border:1px solid #eee4da;border-radius:var(--radius);box-shadow:var(--shadow);padding:var(--s4)}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:center}
-    .portrait,.img-cover{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover}
+    .img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover}
     .muted{color:var(--muted);font-size:.95rem}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.85rem 1rem;border-radius:12px;font-weight:700;border:1px solid transparent;box-shadow:var(--shadow);cursor:pointer}
     .btn-primary{background:var(--accent);color:#fff} .btn-primary:hover{filter:brightness(.95);text-decoration:none}
     .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:var(--s2)}
+    footer{padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center}
     @media (max-width:900px){.grid-2{grid-template-columns:1fr}.nav{flex-wrap:wrap;gap:.75rem}}
   </style>
 </head>
 <body>
+  <!-- Topo -->
   <header>
     <div class="container nav">
       <div class="brand" aria-label="Identidade do site">
         <div class="logo">
-          <img src="454AF7DC-6160-438E-B2BA-1515617430DB.png" alt="Logo Laura Sathler" onerror="this.onerror=null;this.src='laura-avatar-512.webp'" />
+          <img src="laura-avatar-512.webp" alt="Logo/Avatar Laura" />
         </div>
         <div class="brand-text">
           <b>Laura Sathler</b>
@@ -60,77 +73,82 @@
   </header>
 
   <main>
-    <!-- O que é Psicoterapia -->
+    <!-- Seção: O que é Psicoterapia? (texto à esquerda, foto à direita) -->
     <section id="psicoterapia">
       <div class="container grid-2">
         <div class="card">
           <h2>O que é Psicoterapia?</h2>
-          <p>A psicoterapia é um espaço seguro de escuta e acolhimento, em que você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo de autoconhecimento e cuidado, que ajuda a reconhecer sua história, compreender as próprias dores e fortalecer o que traz sentido e vitalidade à vida.</p>
-          <p>Esse caminho nem sempre é simples: pede presença, abertura e, muitas vezes, coragem para olhar para dentro. Ao mesmo tempo, é um espaço de encontro, clareza e afeto, que favorece escolhas mais conscientes e formas mais autênticas de viver.</p>
-          <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo — no seu tempo e do seu jeito.</p>
+          <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
+          <p>Esse caminho nem sempre é simples — ele exige presença, entrega e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
+          <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
         </div>
         <div>
-          <img class="img-cover" src="hero-banner-1200x800.webp" alt="Terapeuta e paciente em diálogo acolhedor" width="1200" height="800" />
+          <img class="img" src="terapeuta-paciente-1200x800.webp"
+               onerror="this.onerror=null;this.src='laura-avatar-512.webp'"
+               alt="Terapeuta e paciente em diálogo acolhedor" width="1200" height="800" />
         </div>
       </div>
     </section>
 
-    <!-- Sobre mim -->
+    <!-- Seção: Sobre mim (foto à esquerda, texto à direita) -->
     <section id="sobre">
       <div class="container grid-2">
+        <div>
+          <img class="img" src="laura-portrait-960x1200.webp"
+               onerror="this.onerror=null;this.src='laura-avatar-512.webp'"
+               alt="Foto de Laura Sathler" width="960" height="1200" loading="lazy" />
+        </div>
         <div class="card">
           <h2>Sobre mim</h2>
-          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha prática se baseia na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
-          <p>Tenho experiência no cuidado de questões como ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e desafios nos relacionamentos. Meu objetivo é oferecer um acompanhamento que respeite o seu ritmo, promova clareza e fortalecimento emocional e abra novas perspectivas para viver com mais autenticidade e equilíbrio.</p>
-        </div>
-        <div>
-          <img class="portrait" src="laura-avatar-512.webp" alt="Foto de Laura Sathler" width="512" height="512" />
+          <p>Sou Laura Sathler, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em Avaliação e Diagnóstico Psicológico. Minha atuação é baseada na abordagem humanista-existencial, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
+          <p>Atendo exclusivamente online adolescentes e adultos, com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
         </div>
       </div>
     </section>
 
-    <!-- Quando procurar -->
+    <!-- Seção: Quando procurar terapia -->
     <section id="quando">
       <div class="container card">
-        <h2>Quando procurar terapia</h2>
-        <p>Procure terapia se você percebe que:</p>
+        <h2>Quando buscar terapia?</h2>
+        <p>Pode ser o momento de iniciar um processo terapêutico quando você:</p>
         <ul>
-          <li>ansiedade, tristeza ou cansaço emocional têm sido frequentes;</li>
-          <li>mudanças, perdas ou transições de vida estão difíceis de elaborar;</li>
-          <li>um sentimento de vazio ou de falta de sentido tem aparecido com constância;</li>
-          <li>conflitos nos relacionamentos ou no trabalho estão se repetindo;</li>
-          <li>deseja se conhecer melhor e criar novas formas de viver com mais presença e coerência.</li>
+          <li>Sente ansiedade, tristeza ou cansaço emocional frequentes.</li>
+          <li>Percebe dificuldade para lidar com mudanças, perdas ou transições de vida.</li>
+          <li>Vive um sentimento de vazio ou falta de sentido.</li>
+          <li>Enfrenta conflitos nos relacionamentos ou no trabalho.</li>
+          <li>Quer se conhecer melhor e encontrar novas formas de viver com mais equilíbrio e autenticidade.</li>
         </ul>
-        <p class="muted">Cuidar da saúde emocional é um investimento em qualidade de vida.</p>
+        <p>A terapia é para qualquer pessoa que deseje cuidar da saúde emocional e desenvolver recursos para lidar com os desafios da vida.</p>
       </div>
     </section>
 
-    <!-- Contato -->
+    <!-- Seção: Chamada para atendimento -->
     <section id="contato">
       <div class="container card">
         <h2>Agende sua sessão</h2>
-        <p>Se sentir que este é um bom momento para começar, estou à disposição para conversarmos.</p>
+        <p>Estou à disposição para conversar e iniciar um processo terapêutico com você.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="https://wa.me/5531991593800" target="_blank" rel="noopener">Falar no WhatsApp</a>
-          <a class="btn" href="mailto:Laurasathler@yahoo.com.br">Enviar e-mail</a>
+          <a class="btn btn-primary" href="https://wa.me/5531991593800" target="_blank" rel="noopener">📱 WhatsApp: Clique aqui para falar comigo</a>
+          <a class="btn" href="mailto:Laurasathler@yahoo.com.br">📧 E‑mail: Laurasathler@yahoo.com.br</a>
         </div>
-        <p style="margin-top:var(--s2)"><strong>Telefone:</strong> +55 31 99159-3800 · <strong>E-mail:</strong> <a href="mailto:Laurasathler@yahoo.com.br">Laurasathler@yahoo.com.br</a></p>
+        <p style="margin-top:var(--s2)">☎️ <strong>Telefone:</strong> +55 31 99159‑3800</p>
+        <p class="muted" style="margin-top:var(--s1)">Atendimento online, com horários flexíveis e ambiente seguro para que você possa se expressar livremente.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center">
-      © <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866
-    </div>
+    <div class="container">© <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866</div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}})
-    })
+      a.addEventListener('click',e=>{
+        const el=document.querySelector(a.getAttribute('href'));
+        if(el){e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});}
+      });
+    });
   </script>
 </body>
 </html>
-
