@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
   <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866." />
-  <link rel="icon" href="laura-avatar-512.webp" type="image/webp" />
+  <link rel="icon" href="theraphy-elements-1200x800.webp" type="image/webp" />
   <style>
     :root{
       --bg:#f6efe9; --bg2:#fbf8f5; --card:#ffffff; --text:#2b2b2b; --muted:#6b6b6b;
