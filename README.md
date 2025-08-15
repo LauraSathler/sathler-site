@@ -3,133 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Laura Sathler | Psicóloga (CRP 04/30866) · Atendimento online</title>
-  <meta name="description" content="Psicoterapia humanista-existencial 100% online para adolescentes e adultos. Ansiedade, vazio existencial, estresse e burnout. Agende sua sessão com Laura Sathler, CRP 04/30866.">
+  <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
+  <meta name="description" content="Psicoterapia humanista-existencial para cuidado emocional, autoconhecimento e qualidade de vida. Agende sua sessão com Laura Sathler, CRP 04/30866." />
   <link rel="icon" type="image/webp" href="laura-avatar-512.webp" />
-
   <style>
-    /* ========= Design tokens ========= */
     :root{
-      --bg: #f6efe9;
-      --bg-2:#fbf8f5;
-      --card:#ffffff;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --accent:#79a6a3;
-      --accent-2:#e2d6cc;
-      --radius:18px;
-      --shadow: 0 10px 24px rgba(0,0,0,.08);
-      --maxw: 1080px;
-      --space-1: .5rem;
-      --space-2: .75rem;
-      --space-3: 1rem;
-      --space-4: 1.5rem;
-      --space-5: 2rem;
-      --space-6: 3rem;
+      --bg:#f6efe9;--bg2:#fbf8f5;--card:#ffffff;--text:#2b2b2b;--muted:#6b6b6b;--accent:#79a6a3;--accent-2:#e2d6cc;--radius:18px;--shadow:0 10px 24px rgba(0,0,0,.08);--maxw:1080px;--s1:.5rem;--s2:.75rem;--s3:1rem;--s4:1.5rem;--s5:2rem;--s6:3rem
     }
-
-    /* ========= Reset + base ========= */
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color:var(--text);
-      background: linear-gradient(180deg,var(--bg),var(--bg-2) 40%,var(--bg) 100%);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    h1,h2,h3{line-height:1.2;margin:0 0 var(--space-2)}
-    h1{font-size:clamp(1.8rem, 3.5vw, 2.6rem)}
-    h2{font-size:clamp(1.4rem, 3vw, 2rem)}
-    h3{font-size:clamp(1.1rem, 2.2vw, 1.25rem)}
-    p{margin:0 0 var(--space-3)}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    h1,h2,h3{line-height:1.2;margin:0 0 var(--s2)}
+    h1{font-size:clamp(1.8rem,3.5vw,2.6rem)}
+    h2{font-size:clamp(1.4rem,3vw,2rem)}
+    h3{font-size:clamp(1.1rem,2.2vw,1.25rem)}
+    p{margin:0 0 var(--s3)}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
-
-    /* ========= Header / Nav ========= */
-    header{
-      position:sticky; top:0; z-index:10;
-      background: rgba(246,239,233,.85);
-      backdrop-filter: saturate(160%) blur(8px);
-      border-bottom:1px solid #eadfd6;
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: .7rem 0;
-    }
-    .brand{
-      display:flex; gap:.75rem; align-items:center; font-weight:700;
-    }
-    .brand .logo{
-      width:34px;height:34px;border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--accent) 0, #8eb8b5 35%, #9cc3bf 60%, #bfd8d6 100%);
-      box-shadow:var(--shadow);
-      flex:0 0 34px;
-    }
+    header{position:sticky;top:0;z-index:10;background:rgba(246,239,233,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eadfd6}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:40px;height:40px;border-radius:50%;overflow:hidden;box-shadow:var(--shadow);flex:0 0 40px}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-text b{font-weight:800}
+    .brand-text small{color:var(--muted)}
     nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
     nav a{display:inline-block;padding:.35rem .55rem;border-radius:10px;font-weight:600}
     nav a:hover{background:var(--accent-2);text-decoration:none}
-
-    /* ========= Sections ========= */
-    section{padding: var(--space-6) 0}
-    .card{
-      background:var(--card); border:1px solid #eee4da;
-      border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--space-4);
-    }
-    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items:center}
-    .grid-2.reverse{grid-template-columns: 1fr 1fr}
-    .grid-3{display:grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3)}
-    .img-cover{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .portrait{width:100%;height:auto;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+    section{padding:var(--s6) 0}
+    .card{background:var(--card);border:1px solid #eee4da;border-radius:var(--radius);box-shadow:var(--shadow);padding:var(--s4)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:center}
+    .portrait{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover}
     .muted{color:var(--muted);font-size:.95rem}
-
-    /* ========= Hero ========= */
-    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-4); align-items:center; padding: var(--space-6) 0}
-    .kicker{color:var(--muted); margin-bottom:var(--space-2)}
-    .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:var(--space-2)}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      gap:.4rem;padding:.85rem 1rem;border-radius:12px;font-weight:700;border:1px solid transparent;
-      box-shadow:var(--shadow); cursor:pointer;
-    }
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.85rem 1rem;border-radius:12px;font-weight:700;border:1px solid transparent;box-shadow:var(--shadow);cursor:pointer}
     .btn-primary{background:var(--accent);color:#fff}
     .btn-primary:hover{filter:brightness(.95);text-decoration:none}
-    .btn-ghost{background:transparent;border-color:#d8ccc2;color:#433d37}
-
-    /* ========= Pills ========= */
-    .pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:var(--space-2)}
-    .pill{font-size:.92rem; padding:.35rem .6rem; border-radius:999px; background:#edf5f4; border:1px solid #d6ebe9}
-
-    /* ========= Footer ========= */
-    footer{padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center}
-
-    /* ========= Responsive ========= */
-    @media (max-width: 900px){
-      .hero, .grid-2, .grid-2.reverse{grid-template-columns: 1fr}
-      nav ul{gap:.4rem}
-    }
+    .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:var(--s2)}
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}.nav{flex-wrap:wrap;gap:.75rem}}
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="brand">
-        <span class="logo" aria-hidden="true"></span>
-        <div>
-          <div>Laura Sathler</div>
-          <small class="muted">Psicóloga · CRP 04/30866 · Atendimento online</small>
+      <div class="brand" aria-label="Identidade do site">
+        <div class="logo"><img src="laura-avatar-512.webp" alt="Logo/Avatar Laura" width="80" height="80" /></div>
+        <div class="brand-text">
+          <b>Laura Sathler</b>
+          <small>Psicóloga · CRP 04/30866</small>
         </div>
       </div>
       <nav aria-label="principal">
         <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#atendimento">Atendimento</a></li>
+          <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
+          <li><a href="#sobre">Sobre mim</a></li>
+          <li><a href="#quando">Quando procurar</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -137,8 +67,76 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section id="inicio" class="container hero">
-      <div>
-        <div class="kicker">Psicoterapia humanista‑existencial</div>
-        <h1>Espaço de acolhimento, presença e reconexão
+    <!-- O que é Psicoterapia -->
+    <section id="psicoterapia">
+      <div class="container grid-2">
+        <div>
+          <img class="portrait" src="terapeuta-paciente-1200x800.webp" alt="Terapeuta e paciente em diálogo acolhedor" width="1200" height="800" />
+        </div>
+        <div class="card">
+          <h2>O que é Psicoterapia?</h2>
+          <p>A psicoterapia é um espaço seguro de escuta e acolhimento, em que você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo de autoconhecimento e cuidado, que ajuda a reconhecer sua história, compreender as próprias dores e fortalecer o que traz sentido e vitalidade à vida.</p>
+          <p>Esse caminho nem sempre é simples: pede presença, abertura e, muitas vezes, coragem para olhar para dentro. Ao mesmo tempo, é um espaço de encontro, clareza e afeto, que favorece escolhas mais conscientes e formas mais autênticas de viver.</p>
+          <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo — no seu tempo e do seu jeito.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre mim -->
+    <section id="sobre">
+      <div class="container grid-2">
+        <div>
+          <img class="portrait" src="laura-portrait-960x1200.webp" alt="Foto de Laura Sathler" width="960" height="1200" loading="lazy" />
+        </div>
+        <div class="card">
+          <h2>Sobre mim</h2>
+          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha prática se baseia na abordagem <strong>humanista‑existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
+          <p>Tenho experiência no cuidado de questões como ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e desafios nos relacionamentos. Meu objetivo é oferecer um acompanhamento que respeite o seu ritmo, promova clareza e fortalecimento emocional e abra novas perspectivas para viver com mais autenticidade e equilíbrio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quando procurar terapia -->
+    <section id="quando">
+      <div class="container card">
+        <h2>Quando procurar terapia</h2>
+        <p>Procure terapia se você percebe que:</p>
+        <ul>
+          <li>ansiedade, tristeza ou cansaço emocional têm sido frequentes;</li>
+          <li>mudanças, perdas ou transições de vida estão difíceis de elaborar;</li>
+          <li>um sentimento de vazio ou de falta de sentido tem aparecido com constância;</li>
+          <li>conflitos nos relacionamentos ou no trabalho estão se repetindo;</li>
+          <li>deseja se conhecer melhor e criar novas formas de viver com mais presença e coerência.</li>
+        </ul>
+        <p class="muted">Cuidar da saúde emocional é um investimento em qualidade de vida.</p>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+      <div class="container card">
+        <h2>Agende sua sessão</h2>
+        <p>Se sentir que este é um bom momento para começar, estou à disposição para conversarmos.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://wa.me/5531991593800" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="btn" href="mailto:Laurasathler@yahoo.com.br">Enviar e‑mail</a>
+        </div>
+        <p style="margin-top:var(--s2)"><strong>Telefone:</strong> +55 31 99159‑3800 · <strong>E‑mail:</strong> <a href="mailto:Laurasathler@yahoo.com.br">Laurasathler@yahoo.com.br</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center">
+      © <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}})
+    })
+  </script>
+</body>
+</html>
