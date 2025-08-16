@@ -4,18 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
-  <meta name="description" content="Psicoterapia humanista-existencial para cuidado emocional, autoconhecimento e qualidade de vida. Agende sua sessão com Laura Sathler, CRP 04/30866." />
+  <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <style>
     :root{
-      --bg:#f6efe9;--bg2:#fbf8f5;--card:#ffffff;--text:#2b2b2b;
-      --muted:#6b6b6b;--accent:#79a6a3;--accent-2:#e2d6cc;
-      --radius:18px;--shadow:0 10px 24px rgba(0,0,0,.08);
-      --maxw:1080px;--s1:.5rem;--s2:.75rem;--s3:1rem;
-      --s4:1.5rem;--s5:2rem;--s6:3rem
+      --bg:#f6efe9; --bg2:#fbf8f5; --card:#ffffff; --text:#2b2b2b; --muted:#6b6b6b;
+      --accent:#79a6a3; --accent-2:#e2d6cc; --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --maxw:1080px; --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem; --s5:2rem; --s6:3rem;
+      --header-h:64px;
     }
     *,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);
-      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);line-height:1.6}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);
+      line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
     h1,h2,h3{line-height:1.2;margin:0 0 var(--s2)}
     h1{font-size:clamp(1.8rem,3.5vw,2.6rem)}
     h2{font-size:clamp(1.4rem,3vw,2rem)}
@@ -23,48 +27,79 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
-    header{position:sticky;top:0;z-index:10;background:rgba(246,239,233,.9);
-      backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eadfd6}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
-    .brand{display:flex;align-items:center;gap:.75rem}
-    .brand-text{display:flex;flex-direction:column}
-    .brand-text b{font-weight:800}
-    .brand-text small{color:var(--muted)}
-    nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
-    nav a{padding:.35rem .55rem;border-radius:10px;font-weight:600}
-    nav a:hover{background:var(--accent-2)}
-    section{padding:var(--s6) 0}
-    .card{background:var(--card);border:1px solid #eee4da;border-radius:var(--radius);
-      box-shadow:var(--shadow);padding:var(--s4)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:center}
-    .img-cover{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover}
-    .portrait-circle{
-      width:240px;height:240px;border-radius:50%;object-fit:cover;
-      box-shadow:var(--shadow);display:block;margin:auto
+
+    /* Header fixo + nav responsiva */
+    header{
+      position:sticky; top:0; z-index:20; height:var(--header-h);
+      background:rgba(246,239,233,.9); backdrop-filter:saturate(160%) blur(8px);
+      border-bottom:1px solid #eadfd6;
     }
-    .muted{color:var(--muted);font-size:.95rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
-      padding:.85rem 1rem;border-radius:12px;font-weight:700;border:1px solid transparent;
-      box-shadow:var(--shadow);cursor:pointer}
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-primary:hover{filter:brightness(.95)}
-    .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:var(--s2)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--header-h)}
+    .brand{display:flex;flex-direction:column;justify-content:center}
+    .brand b{font-weight:800}
+    .brand small{color:var(--muted)}
+
+    /* Menu hamburguer (checkbox hack) */
+    .menu-toggle{display:none}
+    .menu-btn{display:none; align-items:center; gap:.5rem; font-weight:700; padding:.5rem .75rem; border-radius:10px}
+    nav ul{display:flex; gap:.75rem; list-style:none; margin:0; padding:0}
+    nav a{display:inline-block; padding:.35rem .55rem; border-radius:10px; font-weight:600}
+    nav a:hover{background:var(--accent-2); text-decoration:none}
+
+    /* Seções */
+    section{padding:calc(var(--s6) + .5rem) 0; scroll-margin-top:calc(var(--header-h) + 10px)}
+    .card{background:var(--card); border:1px solid #eee4da; border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
+
+    /* Imagens */
+    .img-cover{width:100%; max-width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow); object-fit:cover; aspect-ratio:16/9}
+    .portrait-circle{
+      width:300px; height:300px; border-radius:50%; object-fit:cover;
+      box-shadow:var(--shadow); display:block; margin:auto;
+    }
+
+    .muted{color:var(--muted); font-size:.95rem}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.4rem; padding:.85rem 1rem;
+         border-radius:12px; font-weight:700; border:1px solid transparent; box-shadow:var(--shadow); cursor:pointer}
+    .btn-primary{background:var(--accent); color:#fff}
+    .btn-primary:hover{filter:brightness(.95); text-decoration:none}
+    .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:var(--s2)}
+
+    footer{padding:2rem 0; border-top:1px solid #eadfd6; color:var(--muted); text-align:center}
+
+    /* MOBILE (até 900px) */
     @media (max-width:900px){
       .grid-2{grid-template-columns:1fr}
-      .portrait-circle{width:200px;height:200px}
+      /* Ordem das colunas por seção para manter lógica no mobile */
+      #psicoterapia .text{order:1}  #psicoterapia .media{order:2}
+      #sobre .media{order:1}        #sobre .text{order:2}
+
+      .portrait-circle{width:240px; height:240px}
+      .card{padding:var(--s3)}
+      section{padding:var(--s5) 0}
+
+      /* Nav responsiva */
+      .menu-btn{display:flex}
+      nav{position:absolute; top:var(--header-h); left:0; right:0; background:rgba(246,239,233,.98); border-bottom:1px solid #eadfd6; display:none}
+      nav ul{flex-direction:column; padding:1rem}
+      .menu-toggle:checked + .menu-btn + nav{display:block}
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="brand">
-        <div class="brand-text">
-          <b>Laura Sathler</b>
-          <small>Psicóloga · CRP 04/30866</small>
-        </div>
+      <div class="brand" aria-label="Identidade do site">
+        <b>Laura Sathler</b>
+        <small>Psicóloga · CRP 04/30866</small>
       </div>
-      <nav>
+
+      <!-- Menu mobile -->
+      <input id="menu" class="menu-toggle" type="checkbox" />
+      <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
+
+      <nav aria-label="principal">
         <ul>
           <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
           <li><a href="#sobre">Sobre mim</a></li>
@@ -76,39 +111,40 @@
   </header>
 
   <main>
-    <!-- O que é Psicoterapia -->
+    <!-- O que é Psicoterapia? (texto à esquerda, foto horizontal à direita) -->
     <section id="psicoterapia">
       <div class="container grid-2">
-        <div class="card">
+        <div class="card text">
           <h2>O que é Psicoterapia?</h2>
           <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
-          <p>Esse caminho nem sempre é simples; ele exige presença, entrega e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
+          <p>Esse caminho nem sempre é simples — ele exige presença, entrega e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
           <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
         </div>
-        <div>
-          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" />
+        <div class="media">
+          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- Sobre mim -->
+    <!-- Sobre mim (foto em círculo à esquerda, texto à direita) -->
     <section id="sobre">
       <div class="container grid-2">
-        <div>
-          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" />
+        <div class="media" style="text-align:center">
+          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy">
         </div>
-        <div class="card">
+        <div class="card text">
           <h2>Sobre mim</h2>
           <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha atuação é baseada na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
-          <p>Atendo exclusivamente online adolescentes, adultos, casais e família, com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
+          <p>Atendo exclusivamente online adolescentes e adultos, com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
         </div>
       </div>
     </section>
 
-    <!-- Quando procurar terapia -->
+    <!-- Quando procurar -->
     <section id="quando">
       <div class="container card">
         <h2>Quando buscar terapia?</h2>
+        <p>Pode ser o momento de iniciar um processo terapêutico quando você:</p>
         <ul>
           <li>Sente ansiedade, tristeza ou cansaço emocional frequentes.</li>
           <li>Percebe dificuldade para lidar com mudanças, perdas ou transições de vida.</li>
@@ -135,9 +171,7 @@
   </main>
 
   <footer>
-    <div class="container" style="padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center">
-      © <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866
-    </div>
+    <div class="container">© <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866</div>
   </footer>
 
   <script>
