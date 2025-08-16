@@ -35,9 +35,11 @@
       border-bottom:1px solid #eadfd6;
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--header-h)}
-    .brand{display:flex;flex-direction:column;justify-content:center}
-    .brand b{font-weight:800}
-    .brand small{color:var(--muted)}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand-logo{height:32px;width:auto;border-radius:6px;box-shadow:var(--shadow)}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-text b{font-weight:800}
+    .brand-text small{color:var(--muted)}
 
     /* Menu hamburguer (checkbox hack) */
     .menu-toggle{display:none}
@@ -91,8 +93,13 @@
   <header>
     <div class="container nav">
       <div class="brand" aria-label="Identidade do site">
-        <b>Laura Sathler</b>
-        <small>Psicóloga · CRP 04/30866</small>
+        <!-- Logomarca pequena ao lado do nome/CRP -->
+        <img src="Logomarca.jpeg" alt="Logomarca Laura Sathler" class="brand-logo"
+             decoding="async" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <b>Laura Sathler</b>
+          <small>Psicóloga · CRP 04/30866</small>
+        </div>
       </div>
 
       <!-- Menu mobile -->
@@ -121,7 +128,7 @@
           <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
         </div>
         <div class="media">
-          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy">
+          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
@@ -130,7 +137,7 @@
     <section id="sobre">
       <div class="container grid-2">
         <div class="media" style="text-align:center">
-          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy">
+          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
         </div>
         <div class="card text">
           <h2>Sobre mim</h2>
@@ -175,6 +182,7 @@
   </footer>
 
   <script>
+    // Ano dinâmico no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
