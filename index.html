@@ -36,7 +36,11 @@
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--header-h)}
     .brand{display:flex;align-items:center;gap:.6rem}
-    .brand-logo{height:32px;width:auto;border-radius:6px;box-shadow:var(--shadow)}
+    /* <<< AQUI: logo sem quadro/sombra/fundo >>> */
+    .brand-logo{
+      height:32px; width:auto; display:block;
+      border:none; outline:none; border-radius:0; box-shadow:none; background:transparent;
+    }
     .brand-text{display:flex;flex-direction:column}
     .brand-text b{font-weight:800}
     .brand-text small{color:var(--muted)}
@@ -53,7 +57,7 @@
     .card{background:var(--card); border:1px solid #eee4da; border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)}
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
 
-    /* Imagens */
+    /* Imagens (mantém sombra somente nas imagens de conteúdo, não na logo) */
     .img-cover{width:100%; max-width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow); object-fit:cover; aspect-ratio:16/9}
     .portrait-circle{
       width:300px; height:300px; border-radius:50%; object-fit:cover;
@@ -142,7 +146,7 @@
         <div class="card text">
           <h2>Sobre mim</h2>
           <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha atuação é baseada na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
-          <p>Atendo exclusivamente online adolescentes e adultos, com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
+          <p>Atendo exclusivamente online pessoas com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
         </div>
       </div>
     </section>
@@ -187,3 +191,4 @@
   </script>
 </body>
 </html>
+
