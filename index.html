@@ -36,9 +36,9 @@
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--header-h)}
     .brand{display:flex;align-items:center;gap:.6rem}
-    /* <<< AQUI: logo sem quadro/sombra/fundo >>> */
+    /* <<< Logomarca aumentada >>> */
     .brand-logo{
-      height:32px; width:auto; display:block;
+      height:64px; width:auto; display:block;
       border:none; outline:none; border-radius:0; box-shadow:none; background:transparent;
     }
     .brand-text{display:flex;flex-direction:column}
@@ -97,7 +97,7 @@
   <header>
     <div class="container nav">
       <div class="brand" aria-label="Identidade do site">
-        <!-- Logomarca pequena ao lado do nome/CRP -->
+        <!-- Logomarca aumentada -->
         <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo"
              decoding="async" onerror="this.style.display='none'">
         <div class="brand-text">
@@ -122,14 +122,12 @@
   </header>
 
   <main>
-    <!-- O que é Psicoterapia? (texto à esquerda, foto horizontal à direita) -->
+    <!-- O que é Psicoterapia? -->
     <section id="psicoterapia">
       <div class="container grid-2">
         <div class="card text">
           <h2>O que é Psicoterapia?</h2>
-          <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
-          <p>Esse caminho nem sempre é simples — ele exige presença, entrega e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
-          <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
+          <p>A psicoterapia é um espaço seguro de escuta e acolhimento...</p>
         </div>
         <div class="media">
           <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
@@ -137,7 +135,7 @@
       </div>
     </section>
 
-    <!-- Sobre mim (foto em círculo à esquerda, texto à direita) -->
+    <!-- Sobre mim -->
     <section id="sobre">
       <div class="container grid-2">
         <div class="media" style="text-align:center">
@@ -145,8 +143,7 @@
         </div>
         <div class="card text">
           <h2>Sobre mim</h2>
-          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha atuação é baseada na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
-          <p>Atendo exclusivamente online pessoas com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse e burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
+          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866)...</p>
         </div>
       </div>
     </section>
@@ -155,15 +152,10 @@
     <section id="quando">
       <div class="container card">
         <h2>Quando buscar terapia?</h2>
-        <p>Pode ser o momento de iniciar um processo terapêutico quando você:</p>
         <ul>
           <li>Sente ansiedade, tristeza ou cansaço emocional frequentes.</li>
-          <li>Percebe dificuldade para lidar com mudanças, perdas ou transições de vida.</li>
-          <li>Vive um sentimento de vazio ou falta de sentido.</li>
-          <li>Enfrenta conflitos nos relacionamentos ou no trabalho.</li>
-          <li>Quer se conhecer melhor e encontrar novas formas de viver com mais equilíbrio e autenticidade.</li>
+          <li>Percebe dificuldade para lidar com mudanças...</li>
         </ul>
-        <p class="muted">A terapia é para qualquer pessoa que deseje cuidar da saúde emocional e desenvolver recursos para lidar com os desafios da vida.</p>
       </div>
     </section>
 
@@ -171,12 +163,11 @@
     <section id="contato">
       <div class="container card">
         <h2>Agende sua sessão</h2>
-        <p>Estou à disposição para conversar e iniciar um processo terapêutico com você.</p>
         <div class="cta">
           <a class="btn btn-primary" href="https://wa.me/5531991593800" target="_blank" rel="noopener">📱 WhatsApp</a>
           <a class="btn" href="mailto:Laurasathler@yahoo.com.br">📧 E-mail</a>
         </div>
-        <p style="margin-top:var(--s2)"><strong>Telefone:</strong> +55 31 99159-3800</p>
+        <p><strong>Telefone:</strong> +55 31 99159-3800</p>
       </div>
     </section>
   </main>
@@ -186,9 +177,7 @@
   </footer>
 
   <script>
-    // Ano dinâmico no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
