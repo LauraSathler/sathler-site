@@ -30,8 +30,9 @@
       font-weight:700;border:1px solid transparent;box-shadow:var(--shadow);cursor:pointer;text-decoration:none}
     .btn-primary{background:var(--accent);color:#fff}
     footer{padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center}
+    /* ícones sociais */
     .social{margin-top:1rem;display:flex;justify-content:center;gap:1rem}
-    .social a svg{width:28px;height:28px;fill:var(--accent);transition:.2s}
+    .social a svg{width:26px;height:26px;fill:var(--accent);transition:.2s}
     .social a:hover svg{fill:#2b2b2b}
     @media(max-width:900px){.grid-2{grid-template-columns:1fr}.portrait-circle{width:240px;height:240px}}
   </style>
@@ -40,9 +41,9 @@
   <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="brand">
+      <div class="brand" aria-label="Identidade do site">
         <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo"
-             onerror="this.onerror=null;this.src='Logomarca.jpeg'">
+             onerror="this.style.display='none'">
         <div class="brand-text">
           <b>Laura Sathler</b>
           <small>Psicóloga · CRP 04/30866</small>
@@ -60,7 +61,8 @@
   </header>
 
   <main>
-    <!-- Conteúdo omitido para brevidade (psicoterapia, sobre mim, quando procurar) -->
+    <!-- Conteúdo das seções (psicoterapia, sobre mim, quando procurar, contato) -->
+    <!-- ... seu conteúdo atual ... -->
 
     <!-- Contato -->
     <section id="contato">
@@ -73,10 +75,10 @@
         </div>
         <p style="margin-top:1rem"><strong>Telefone:</strong> +55 31 99159-3800</p>
 
-        <!-- Ícone do Instagram -->
+        <!-- Ícones sociais -->
         <div class="social">
           <a href="https://instagram.com/laurasathler" target="_blank" aria-label="Instagram">
-            <!-- SVG do ícone do Instagram -->
+            <!-- ícone Instagram -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32Zm-48,128a24,24,0,1,1-24-24A24,24,0,0,1,352,160ZM224,338a82,82,0,1,1,82-82A81.91,81.91,0,0,1,224,338Zm176,94a18,18,0,0,1-18,18H66a18,18,0,0,1-18-18V176H82.91a140.65,140.65,0,0,0-2.91,28,144,144,0,1,0,288,0,140.65,140.65,0,0,0-2.91-28H400Z"/>
             </svg>
@@ -93,7 +95,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('nav a').forEach(a=>{
-      a.addEventListener('click',()=>{const cb=document.getElementById('menu');if(cb) cb.checked=false;});
+      a.addEventListener('click',()=>{ const cb=document.getElementById('menu'); if(cb) cb.checked=false; });
     });
   </script>
 </body>
