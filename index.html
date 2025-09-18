@@ -17,7 +17,9 @@
       background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);line-height:1.6
     }
     h1,h2,h3{line-height:1.2;margin:0 0 .75rem}
+    p{margin:0 0 1rem}
     a{color:var(--accent);text-decoration:none}
+    .muted{color:var(--muted)}
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
 
     /* Cabeçalho */
@@ -25,7 +27,7 @@
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.6rem 0;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:.6rem}
     .brand-logo{height:64px;width:auto}
-    nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
+    nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
     nav a{padding:.35rem .55rem;border-radius:10px;font-weight:600}
     nav a:hover{background:var(--accent-2)}
 
@@ -33,10 +35,15 @@
     section{padding:var(--s6) 0;scroll-margin-top:var(--anchor-offset)}
     .card{background:var(--card);border:1px solid #eee4da;border-radius:var(--radius);box-shadow:var(--shadow);padding:var(--s4)}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);align-items:start}
     .portrait-circle{width:300px;height:300px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow);display:block;margin:auto}
 
+    /* Listas limpas */
+    .list-clean{padding-left:1rem}
+    .list-clean li{margin:.5rem 0}
+
     /* Ícones de contato – tamanho, foco e animação */
-    .social{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
+    .social{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
     .social a{
       display:inline-flex;align-items:center;justify-content:center;
       width:52px;height:52px;border-radius:16px;background:transparent;
@@ -45,10 +52,17 @@
     .social a:hover{transform:translateY(-1px);filter:brightness(0.98)}
     .social svg{width:52px;height:52px;display:block}
 
+    /* Mini-CTA */
+    .mini-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem}
+    .btn{display:inline-block;border-radius:12px;padding:.7rem 1rem;font-weight:700;border:1px solid #eadfd6}
+    .btn-primary{background:var(--accent);color:#fff;border-color:transparent}
+    .btn-secondary{background:#fff;color:var(--text)}
+
     footer{padding:2rem 0;border-top:1px solid #eadfd6;color:var(--muted);text-align:center}
 
     @media(max-width:900px){
       .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
       .portrait-circle{width:240px;height:240px}
     }
   </style>
@@ -68,6 +82,7 @@
         <ul>
           <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
           <li><a href="#sobre">Sobre mim</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#quando">Quando procurar</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -82,7 +97,7 @@
         <div class="card text">
           <h2>O que é Psicoterapia?</h2>
           <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
-          <p>Esse caminho nem sempre é simples; ele exige presença, entrega e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
+          <p>Esse caminho nem sempre é simples; ele exige presença e coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
           <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
         </div>
         <div class="media">
@@ -100,7 +115,77 @@
         <div class="card text">
           <h2>Sobre mim</h2>
           <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha atuação é baseada na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
-          <p>Atendo exclusivamente online pessoas com foco em casos de ansiedade, tristeza persistente, vazio existencial, estresse, burnout, autoestima e questões relacionadas a relacionamentos. Meu objetivo é oferecer um cuidado que respeite o seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
+          <p>Atendo exclusivamente online, com foco em ansiedade, tristeza persistente, vazio existencial, estresse, burnout, autoestima e questões de relacionamento. O objetivo é oferecer cuidado que respeite seu ritmo e promova clareza, fortalecimento emocional e novas perspectivas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Especialidades -->
+    <section id="especialidades">
+      <div class="container">
+        <div class="card" style="margin-bottom: var(--s4)">
+          <h2>Especialidades de atendimento</h2>
+          <p class="muted">Mais do que diagnósticos, trabalhamos com histórias. Abaixo, situações comuns que podem indicar que é hora de buscar ajuda.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Adolescentes -->
+          <div class="card">
+            <h3>Adolescentes</h3>
+            <p class="muted">Crescer com segurança emocional — escuta para o jovem e para a família.</p>
+            <ul class="list-clean">
+              <li>Autoestima, insegurança e comparação nas redes</li>
+              <li>Ansiedade escolar, provas e pressão por desempenho</li>
+              <li>Bullying, isolamento e dificuldades de amizade</li>
+              <li>Conflitos familiares e busca de identidade</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-secondary" href="#contato">Quero conversar sobre meu filho(a)</a>
+            </div>
+          </div>
+
+          <!-- Adultos -->
+          <div class="card">
+            <h3>Adultos</h3>
+            <p class="muted">Clareza para decidir e respirar melhor — retome a própria direção.</p>
+            <ul class="list-clean">
+              <li>Ansiedade, estresse e crises de pânico</li>
+              <li>Depressão e sentimentos de vazio</li>
+              <li>Burnout, exaustão e limites no trabalho</li>
+              <li>Luto, separações e recomeços</li>
+              <li>Dificuldade em dizer “não” e estabelecer limites</li>
+              <li>Desenvolvimento pessoal e busca de propósito</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-secondary" href="#contato">Marcar minha sessão</a>
+            </div>
+          </div>
+
+          <!-- Casais -->
+          <div class="card">
+            <h3>Casais</h3>
+            <p class="muted">Reencontro, diálogo e projeto comum — fortaleça a conexão.</p>
+            <ul class="list-clean">
+              <li>Comunicação e resolução de conflitos</li>
+              <li>Reaproximação emocional e afetiva</li>
+              <li>Crises conjugais e decisões sobre separação</li>
+              <li>Sexualidade e intimidade</li>
+              <li>Alinhamento de expectativas e planos em comum</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-secondary" href="#contato">Atendimento para casal</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini-CTA geral -->
+        <div class="card" style="margin-top:var(--s4); text-align:center">
+          <strong>Não precisa enfrentar tudo sozinho(a).</strong>
+          <p class="muted" style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
+          <div class="mini-cta" style="justify-content:center">
+            <a class="btn btn-primary" href="https://wa.me/5531991593800?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20psicoterapia.">Agendar sessão</a>
+            <a class="btn btn-secondary" href="mailto:Laurasathler@yahoo.com.br">Falar por e-mail</a>
+          </div>
         </div>
       </div>
     </section>
@@ -110,12 +195,12 @@
       <div class="container card">
         <h2>Quando buscar terapia?</h2>
         <p>Pode ser o momento de iniciar um processo terapêutico quando você:</p>
-        <ul>
+        <ul class="list-clean">
           <li>Sente ansiedade, tristeza ou cansaço emocional frequentes.</li>
           <li>Percebe dificuldade para lidar com mudanças, perdas ou transições de vida.</li>
           <li>Vive um sentimento de vazio ou falta de sentido.</li>
           <li>Enfrenta conflitos nos relacionamentos ou no trabalho.</li>
-          <li>Quer se conhecer melhor e encontrar novas formas de viver com mais equilíbrio e autenticidade.</li>
+          <li>Quer se conhecer melhor e encontrar formas de viver com mais equilíbrio e autenticidade.</li>
         </ul>
         <p class="muted">A terapia é para qualquer pessoa que deseje cuidar da saúde emocional e desenvolver recursos para lidar com os desafios da vida.</p>
       </div>
@@ -130,8 +215,8 @@
         <!-- ÍCONES com visual oficial -->
         <div class="social" aria-label="Canais de contato">
           <!-- WhatsApp (verde oficial) -->
-          <a href="https://wa.me/5531991593800" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+          <a href="https://wa.me/5531991593800?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20psicoterapia." target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
               <circle cx="32" cy="32" r="32" fill="#25D366"/>
               <path fill="#fff" d="M45.6 18.4A16.5 16.5 0 0 0 16.7 43.9l-1.1 6.9 7-1.1A16.5 16.5 0 0 0 45.6 18.4Zm-6 23.8a13.2 13.2 0 0 1-6.5 1.8h-.1a13 13 0 0 1-5.7-1.4l-.4-.2-4.2.7.7-4.1-.3-.4a13 13 0 1 1 16.5 3.6Zm-1.6-6.3c-.3-.2-1.7-.9-2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a10.6 10.6 0 0 1-3.2-2 12 12 0 0 1-2.2-2.7c-.2-.4 0-.6.1-.8l.5-.6c.2-.2.3-.5.4-.7s0-.5 0-.7c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 5 12 12 0 0 0 2.8 1 .1.1 0 0 0 .2 0h.9c.3 0 .6-.2.8-.5s1-1.2 1.1-1.6.1-.7 0-.8-.2-.2-.5-.4Z"/>
             </svg>
@@ -139,7 +224,7 @@
 
           <!-- E-mail (neutro) -->
           <a href="mailto:Laurasathler@yahoo.com.br" aria-label="E-mail">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
               <rect x="4" y="12" width="56" height="40" rx="8" fill="#4f7cff"/>
               <path fill="#fff" d="M10 20l22 14L54 20v6L32 40 10 26z"/>
             </svg>
@@ -147,7 +232,7 @@
 
           <!-- Instagram (gradiente oficial) -->
           <a href="https://www.instagram.com/laurasathler_psi?igsh=cDh1cDU4MDdqaHJw&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
               <defs>
                 <linearGradient id="ig" x1="0" y1="64" x2="64" y2="0" gradientUnits="userSpaceOnUse">
                   <stop offset="0" stop-color="#feda75"/>
