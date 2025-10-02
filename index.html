@@ -21,7 +21,7 @@
       --maxw:1080px; 
       --s4:1.5rem; 
       --s6:3rem; 
-      --anchor-offset: 90px;
+      --anchor-offset: 120px; /* ↑ aumentei por causa do header mais alto */
     }
     *,*::before,*::after{box-sizing:border-box}
     body{
@@ -44,9 +44,13 @@
       backdrop-filter:saturate(160%) blur(8px);
       border-bottom:1px solid var(--border)
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.6rem 0;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:.6rem}
-    .brand-logo{height:64px;width:auto}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:.75rem;padding:.6rem 0;flex-wrap:wrap
+    }
+    .brand{display:flex;align-items:center;gap:.75rem}
+    /* >>> LOGO MAIOR <<< */
+    .brand-logo{height:100px;width:auto}
     nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
     nav a{padding:.35rem .55rem;border-radius:10px;font-weight:600}
     nav a:hover{background:color-mix(in srgb, var(--accent-2) 35%, #fff)}
@@ -73,7 +77,7 @@
     .grid-3 > .card{
       height:100%;
       display:flex;flex-direction:column;
-      text-align:center; /* centraliza títulos e descrições */
+      text-align:center;
     }
     .grid-3 > .card ul{
       margin:0 auto 1rem auto;
@@ -118,6 +122,8 @@
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
       .portrait-circle{width:240px;height:240px}
+      /* Logo um pouco menor no mobile para caber bem no header */
+      .brand-logo{height:78px}
     }
   </style>
 
@@ -127,7 +133,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    /* Config do seu ID (Google Ads/GA4 via Google tag) */
     gtag('config', 'G-QGB79CFFK8');
   </script>
 </head>
@@ -191,7 +196,6 @@
         </div>
 
         <div class="grid-3">
-          <!-- Adolescentes -->
           <div class="card">
             <h3>Adolescentes</h3>
             <p class="muted">Crescer com segurança emocional: escuta para o jovem e para a família.</p>
@@ -206,7 +210,6 @@
             </div>
           </div>
 
-          <!-- Adultos -->
           <div class="card">
             <h3>Adultos</h3>
             <p class="muted">Clareza para decidir e respirar melhor: retome a própria direção.</p>
@@ -223,7 +226,6 @@
             </div>
           </div>
 
-          <!-- Casais -->
           <div class="card">
             <h3>Casais</h3>
             <p class="muted">Reencontro, diálogo e projeto comum: fortaleça a conexão.</p>
@@ -240,7 +242,6 @@
           </div>
         </div>
 
-        <!-- Mini-CTA geral -->
         <div class="card" style="margin-top:var(--s4); text-align:center">
           <strong>Não precisa enfrentar tudo sozinho(a).</strong>
           <p class="muted" style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
