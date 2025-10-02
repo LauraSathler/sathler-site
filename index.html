@@ -4,113 +4,133 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laura Sathler | Psicóloga (CRP 04/30866)</title>
+  <meta name="description" content="Psicoterapia humanista-existencial com Laura Sathler (CRP 04/30866). Espaço de escuta, acolhimento e reflexão. Agende sua sessão.">
   <style>
-    :root {
-      --bg:#f5efe6;
-      --bg2:#faf6f1;
-      --card:#ffffff;
-      --text:#2b2b2b;
-      --muted:#6a6a6a;
-      --accent:#7aa6a8;
-      --accent-2:#f1c5a6;
-      --border:#e9dfd6;
-      --radius:18px;
-      --shadow:0 10px 24px rgba(0,0,0,.08);
-      --maxw:1080px;
-      --s4:1.5rem;
-      --s6:3rem;
-      --anchor-offset:120px;
+    :root{
+      /* Paleta */
+      --bg:#f5efe6; --bg2:#faf6f1; --card:#ffffff; --text:#2b2b2b; --muted:#6a6a6a;
+      --accent:#7aa6a8; --accent-2:#f1c5a6; --border:#e9dfd6;
+      --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --maxw:1080px; --s4:1.5rem; --s6:3rem;
+      --anchor-offset: 120px; /* espaço para âncoras */
     }
-    body {
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--text);
+      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);
       line-height:1.6;
     }
-    .container {width:min(var(--maxw),92vw);margin-inline:auto}
+    h1,h2,h3{line-height:1.2;margin:0 0 .75rem}
+    p{margin:0 0 1rem}
+    a{color:var(--accent);text-decoration:none}
+    .muted{color:var(--muted)}
+    .container{width:min(var(--maxw),92vw);margin-inline:auto}
 
-    /* HEADER */
-    header {
-      position:sticky;top:0;z-index:30;
+    /* ===== Cabeçalho (estável, moderno e responsivo) ===== */
+    header{
+      position:sticky; top:0; z-index:30;
       background:rgba(245,239,230,.95);
       backdrop-filter:saturate(160%) blur(8px);
       border-bottom:1px solid var(--border);
-      transition:all .25s ease;
+      transition: box-shadow .2s ease, background-color .2s ease;
     }
-    .nav {
-      display:flex;align-items:center;justify-content:space-between;
-      padding:1rem 0;gap:1rem;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; padding:1rem 0; flex-wrap:wrap;
     }
-    .brand {
-      display:flex;align-items:center;gap:.9rem;
-    }
-    .brand-logo {
-      height:120px;width:auto;transition:height .25s ease;
-    }
-    .brand-text {display:flex;flex-direction:column;line-height:1.2}
-    .brand-text b {font-size:1.25rem;font-weight:800}
-    .brand-text small {font-size:.95rem;color:var(--muted)}
+    .brand{display:flex; align-items:center; gap:1rem; min-width:260px}
+    .brand-logo{height:120px; width:auto; display:block}
+    .brand-text{display:flex; flex-direction:column}
+    .brand-text b{font-weight:800; font-size:clamp(1.1rem,1.8vw,1.35rem)}
+    .brand-text small{color:var(--muted)}
 
-    nav ul {list-style:none;margin:0;padding:0;display:flex;gap:1rem}
-    nav a {
-      position:relative;font-weight:600;padding:.45rem .6rem;
+    /* Menu */
+    nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0; flex-wrap:wrap}
+    nav a{position:relative; font-weight:600; padding:.45rem .6rem; border-radius:10px}
+    nav a::after{
+      content:""; position:absolute; left:.6rem; right:.6rem; bottom:.25rem;
+      height:2px; background:color-mix(in srgb, var(--accent) 65%, #fff);
+      transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px;
     }
-    nav a::after {
-      content:"";position:absolute;left:.6rem;right:.6rem;bottom:.2rem;
-      height:2px;background:var(--accent);
-      transform:scaleX(0);transform-origin:left;
-      transition:transform .2s ease;
-    }
-    nav a:hover::after {transform:scaleX(1)}
+    nav a:hover::after{transform:scaleX(1)}
 
-    /* Header encolhe ao rolar */
-    header.scrolled .brand-logo {height:90px}
-
-    /* MOBILE */
+    /* Mobile menu */
     .menu-toggle{display:none}
-    .menu-btn{display:none;cursor:pointer;font-weight:600}
-    @media(max-width:900px){
-      .nav{flex-wrap:wrap}
+    .menu-btn{display:none; cursor:pointer; font-weight:700; padding:.55rem .9rem; border:1px solid var(--border); border-radius:10px}
+    @media (max-width:900px){
+      .menu-btn{display:block}
       nav{width:100%}
-      nav ul{flex-direction:column;align-items:center;gap:.6rem}
-      .menu-btn{display:block;padding:.6rem 1rem;border:1px solid var(--border);border-radius:8px}
       .menu-toggle:not(:checked) + .menu-btn + nav{display:none}
-      .brand-logo{height:90px}
+      nav ul{flex-direction:column; align-items:center; gap:.6rem}
+      .brand-logo{height:96px}
+      :root{ --anchor-offset: 140px; }
     }
 
-    /* SEÇÕES */
-    section{padding:var(--s6) 0;scroll-margin-top:var(--anchor-offset)}
-    .card {
-      background:var(--card);border:1px solid var(--border);
-      border-radius:var(--radius);box-shadow:var(--shadow);
-      padding:var(--s4)
-    }
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:center}
-    .portrait-circle {
-      width:300px;height:300px;border-radius:50%;object-fit:cover;
-      box-shadow:var(--shadow);display:block;margin:auto
+    /* ===== Seções ===== */
+    section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4); align-items:stretch}
+    .grid-3 > .card{height:100%; display:flex; flex-direction:column; text-align:center}
+    .grid-3 > .card ul{margin:0 auto 1rem; text-align:left; max-width:90%}
+    .grid-3 .mini-cta{justify-content:center; margin-top:auto}
+
+    .portrait-circle{
+      width:300px; height:300px; border-radius:50%; object-fit:cover;
+      box-shadow:var(--shadow); display:block; margin:auto
     }
 
-    /* FOOTER */
-    footer{padding:2rem 0;border-top:1px solid var(--border);text-align:center;color:var(--muted)}
+    /* CTAs */
+    .mini-cta{display:flex; gap:1rem; flex-wrap:wrap; margin-top:.75rem}
+    .btn{display:inline-block; border-radius:12px; padding:.7rem 1rem; font-weight:700; border:1px solid var(--border); min-width:180px; text-align:center}
+    .btn-primary{background:var(--accent); color:#fff; border-color:transparent}
+    .btn-primary:hover{filter:brightness(.96)}
+
+    /* Ícones de contato */
+    .social{display:flex; justify-content:center; gap:1rem; margin-top:1rem; flex-wrap:wrap}
+    .social a{display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:16px; transition:transform .15s ease, filter .15s ease}
+    .social a:hover{transform:translateY(-1px); filter:brightness(0.98)}
+    .social svg{width:52px; height:52px; display:block}
+
+    footer{padding:2rem 0; border-top:1px solid var(--border); color:var(--muted); text-align:center}
+
+    /* Quebra responsiva */
+    @media (max-width:900px){
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .portrait-circle{width:240px; height:240px}
+    }
   </style>
+
+  <!-- Google tag (gtag.js) – opcional -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGB79CFFK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QGB79CFFK8');
+  </script>
 </head>
 <body>
+  <!-- Header -->
   <header id="topbar">
     <div class="container nav">
-      <div class="brand">
-        <img src="Logomarca.png" alt="Logo Laura Sathler" class="brand-logo">
+      <div class="brand" aria-label="Identidade do site">
+        <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
         <div class="brand-text">
           <b>Laura Sathler</b>
           <small>Psicóloga · CRP 04/30866</small>
         </div>
       </div>
-      <input id="menu" class="menu-toggle" type="checkbox">
-      <label for="menu" class="menu-btn">☰ Menu</label>
-      <nav>
+
+      <!-- Menu mobile -->
+      <input id="menu" class="menu-toggle" type="checkbox" />
+      <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
+
+      <nav aria-label="principal">
         <ul>
-          <li><a href="#psicoterapia">Psicoterapia</a></li>
+          <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
           <li><a href="#sobre">Sobre mim</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#quando">Quando procurar</a></li>
@@ -121,38 +141,184 @@
   </header>
 
   <main>
+    <!-- O que é Psicoterapia? -->
     <section id="psicoterapia">
       <div class="container grid-2">
-        <div class="card">
+        <div class="card text">
           <h2>O que é Psicoterapia?</h2>
-          <p>A psicoterapia é um espaço seguro de escuta e acolhimento...</p>
+          <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
+          <p>Esse caminho nem sempre é simples — ele exige presença e, por vezes, coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
+          <p>Cada conversa é uma oportunidade para se escutar, se compreender e se posicionar no mundo, no seu tempo e do seu jeito.</p>
         </div>
-        <div><img src="Terapeuta-Paciente.png" alt="Terapia" style="width:100%;border-radius:18px;box-shadow:var(--shadow)"></div>
+        <div class="media">
+          <img src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async" style="width:100%;border-radius:18px;box-shadow:var(--shadow)">
+        </div>
       </div>
     </section>
 
+    <!-- Sobre mim -->
     <section id="sobre">
       <div class="container grid-2">
-        <div style="text-align:center">
-          <img class="portrait-circle" src="Laura.jpeg" alt="Laura Sathler">
+        <div class="media" style="text-align:center">
+          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
         </div>
-        <div class="card">
+        <div class="card text">
           <h2>Sobre mim</h2>
-          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866)...</p>
+          <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866) com mais de 10 anos de experiência clínica, formada pela PUC Minas e com especialização em <strong>Avaliação e Diagnóstico Psicológico</strong>. Minha atuação é baseada na abordagem <strong>humanista-existencial</strong>, valorizando a singularidade de cada pessoa e construindo um espaço de acolhimento, presença e diálogo genuíno.</p>
+          <p>Meu objetivo é oferecer um cuidado que respeite o seu ritmo, promova clareza e fortalecimento emocional e abra novas perspectivas para viver com mais autenticidade e equilíbrio.</p>
         </div>
       </div>
     </section>
-    <!-- Outras seções aqui -->
+
+    <!-- Especialidades -->
+    <section id="especialidades">
+      <div class="container">
+        <div class="card" style="margin-bottom: var(--s4); text-align:center">
+          <h2>Especialidades de atendimento</h2>
+          <p class="muted">Mais do que diagnósticos, trabalho com histórias. Abaixo, situações comuns que podem indicar que é hora de buscar ajuda.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Adolescentes</h3>
+            <p class="muted">Crescer com segurança emocional: escuta para o jovem e para a família.</p>
+            <ul>
+              <li>Autoestima, insegurança e comparação nas redes</li>
+              <li>Ansiedade escolar, provas e pressão por desempenho</li>
+              <li>Bullying, isolamento e dificuldades de amizade</li>
+              <li>Conflitos familiares e busca de identidade</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-primary" href="#contato">Quero agendar uma conversa</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Adultos</h3>
+            <p class="muted">Clareza para decidir e respirar melhor: retome a própria direção.</p>
+            <ul>
+              <li>Ansiedade, estresse e crises de pânico</li>
+              <li>Depressão e sentimentos de vazio</li>
+              <li>Burnout, exaustão e limites no trabalho</li>
+              <li>Luto, separações e recomeços</li>
+              <li>Dificuldade em dizer “não” e estabelecer limites</li>
+              <li>Desenvolvimento pessoal e busca de propósito</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-primary" href="#contato">Marcar minha sessão</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Casais</h3>
+            <p class="muted">Reencontro, diálogo e projeto comum: fortaleça a conexão.</p>
+            <ul>
+              <li>Comunicação e resolução de conflitos</li>
+              <li>Reaproximação emocional e afetiva</li>
+              <li>Crises conjugais e decisões sobre separação</li>
+              <li>Sexualidade e intimidade</li>
+              <li>Alinhamento de expectativas e planos em comum</li>
+            </ul>
+            <div class="mini-cta">
+              <a class="btn btn-primary" href="#contato">Atendimento para casal</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:var(--s4); text-align:center">
+          <strong>Não precisa enfrentar tudo sozinho(a).</strong>
+          <p class="muted" style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
+          <div class="mini-cta" style="justify-content:center">
+            <a class="btn btn-primary" href="https://wa.me/5531991593800?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20psicoterapia." target="_blank" rel="noopener">Agendar sessão</a>
+            <a class="btn btn-primary" href="mailto:Laurasathler@yahoo.com.br">Falar por e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quando procurar -->
+    <section id="quando">
+      <div class="container card">
+        <h2>Quando buscar terapia?</h2>
+        <p>Pode ser o momento de iniciar um processo terapêutico quando você:</p>
+        <ul>
+          <li>Sente ansiedade, tristeza ou cansaço emocional frequentes.</li>
+          <li>Percebe dificuldade para lidar com mudanças, perdas ou transições de vida.</li>
+          <li>Vive um sentimento de vazio ou falta de sentido.</li>
+          <li>Enfrenta conflitos nos relacionamentos ou no trabalho.</li>
+          <li>Quer se conhecer melhor e encontrar novas formas de viver com mais equilíbrio e autenticidade.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+      <div class="container card" style="text-align:center">
+        <h2>Agende sua sessão</h2>
+        <p>Estou à disposição para conversar e iniciar um processo terapêutico com você.</p>
+
+        <div class="social" aria-label="Canais de contato">
+          <!-- WhatsApp (oficial) -->
+          <a href="https://wa.me/5531991593800" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+              <circle cx="32" cy="32" r="32" fill="#25D366"/>
+              <path fill="#fff" d="M45.6 18.4A16.5 16.5 0 0 0 16.7 43.9l-1.1 6.9 7-1.1A16.5 16.5 0 0 0 45.6 18.4Zm-6 23.8a13.2 13.2 0 0 1-6.5 1.8h-.1a13 13 0 0 1-5.7-1.4l-.4-.2-4.2.7.7-4.1-.3-.4a13 13 0 1 1 16.5 3.6Z"/>
+            </svg>
+          </a>
+          <!-- E-mail -->
+          <a href="mailto:Laurasathler@yahoo.com.br" aria-label="E-mail">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+              <rect x="4" y="12" width="56" height="40" rx="8" fill="#4f7cff"/>
+              <path fill="#fff" d="M10 20l22 14L54 20v6L32 40 10 26z"/>
+            </svg>
+          </a>
+          <!-- Instagram (gradiente oficial) -->
+          <a href="https://www.instagram.com/laurasathler_psi?igsh=cDh1cDU4MDdqaHJw&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+              <defs>
+                <linearGradient id="ig" x1="0" y1="64" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#feda75"/>
+                  <stop offset=".3" stop-color="#fa7e1e"/>
+                  <stop offset=".6" stop-color="#d62976"/>
+                  <stop offset=".85" stop-color="#962fbf"/>
+                  <stop offset="1" stop-color="#4f5bd5"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#ig)"/>
+              <circle cx="32" cy="32" r="11" fill="none" stroke="#fff" stroke-width="4"/>
+              <circle cx="46" cy="18" r="3.5" fill="#fff"/>
+            </svg>
+          </a>
+        </div>
+
+        <p style="margin-top:12px"><strong>Telefone:</strong> +55 31 99159-3800</p>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div class="container">© <span id="year"></span> Laura Sathler · Psicóloga</div>
+    <div class="container">© <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866</div>
   </footer>
 
   <script>
+    // Ano rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
-    const header=document.getElementById('topbar');
-    window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>10)});
+
+    // Ajusta offset das âncoras ao abrir/fechar menu (mobile) e ao redimensionar,
+    // para os títulos nunca ficarem cortados sob o topo.
+    const header = document.getElementById('topbar');
+    function setOffset(){
+      const h = header.offsetHeight || 120;
+      document.documentElement.style.setProperty('--anchor-offset', (h + 20) + 'px');
+    }
+    window.addEventListener('load', setOffset);
+    window.addEventListener('resize', setOffset);
+    document.getElementById('menu')?.addEventListener('change', setOffset);
+
+    // Fecha menu após clique (mobile)
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click',()=>{ const cb=document.getElementById('menu'); if(cb) cb.checked=false; setOffset(); });
+    });
   </script>
 </body>
 </html>
