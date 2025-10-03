@@ -12,6 +12,10 @@
       --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08);
       --maxw:1080px; --s4:1.5rem; --s6:3rem;
       --anchor-offset: 120px;
+      --header-pad: .8rem;            /* padding vertical estável do header */
+      --logo-h-desktop: 140px;        /* altura da logo no desktop */
+      --logo-h-mobile: 100px;         /* altura da logo no mobile */
+      --logo-scale-scrolled: .88;     /* escala quando rola (sem reflow) */
     }
     *,*::before,*::after{box-sizing:border-box}
     body{
@@ -27,17 +31,18 @@
     .muted{color:var(--muted)}
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
 
-    /* ========== HEADER (logo à direita) ========== */
+    /* ===== HEADER: logo à direita, estável ===== */
     header{
       position:sticky; top:0; z-index:30;
       background:rgba(245,239,230,.92);
       backdrop-filter:saturate(160%) blur(8px);
       border-bottom:1px solid var(--border);
-      transition:box-shadow .2s ease, background-color .2s ease;
+      transition: box-shadow .2s ease, background-color .2s ease;
+      will-change: box-shadow, background-color;
     }
-    /* Grid 3 colunas: [Esq: nome/CRP] [Centro: nav] [Dir: logo] */
     .nav{
-      display:grid; align-items:center; column-gap:1rem; padding:.8rem 0;
+      display:grid; align-items:center; column-gap:1rem;
+      padding:var(--header-pad) 0;
       grid-template-columns:auto 1fr auto;
       grid-template-areas:"brand nav logo";
     }
@@ -57,26 +62,25 @@
 
     .logo-wrap{grid-area:logo; justify-self:end}
     .brand-logo{
-      height:110px; width:auto; display:block; transition:height .2s ease, transform .2s ease;
+      height:var(--logo-h-desktop); width:auto; display:block;
+      transform-origin:right center;
+      transition: transform .2s ease;
+      will-change: transform;
     }
     header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.07); background:rgba(245,239,230,.96)}
-    header.scrolled .brand-logo{height:90px; transform:translateY(1px)}
+    header.scrolled .brand-logo{transform: scale(var(--logo-scale-scrolled));}
 
-    /* ========== MENU MOBILE (hambúrguer) ========== */
+    /* ===== MENU MOBILE (abre abaixo, sem sobrepor conteúdo) ===== */
     .menu-toggle{display:none}
     .menu-btn{
       display:none; grid-area:menu; justify-self:center;
       border:1px solid var(--border); border-radius:10px;
-      padding:.5rem .75rem; font-weight:700; cursor:pointer;
-      background:transparent;
+      padding:.5rem .75rem; font-weight:700; cursor:pointer; background:transparent;
     }
 
-    /* ========== SEÇÕES ========== */
+    /* ===== SEÇÕES ===== */
     section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
-    .card{
-      background:var(--card); border:1px solid var(--border);
-      border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)
-    }
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)}
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
     .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4); align-items:stretch}
     .grid-3 > .card{height:100%; display:flex; flex-direction:column; text-align:center}
@@ -103,9 +107,9 @@
 
     footer{padding:2rem 0;border-top:1px solid var(--border);color:var(--muted);text-align:center}
 
-    /* ====== RESPONSIVO ====== */
+    /* ===== RESPONSIVO ===== */
     @media(max-width:900px){
-      /* Header vira 2 linhas: [brand | logo] / [menu] */
+      /* header vira 2 linhas: [brand | logo] / [menu] */
       .nav{
         grid-template-columns:1fr auto;
         grid-template-areas:
@@ -113,21 +117,26 @@
           "menu  menu";
         row-gap:.5rem;
       }
-      nav{grid-area:menu; width:100%}
-      /* botão visível */
+      /* botão visível e nav empurrando o conteúdo (sem overlay) */
       .menu-btn{display:block}
-      /* esconde nav por padrão no mobile */
+      nav{grid-area:menu; width:100%}
       .menu-toggle:not(:checked) + label + nav{display:none}
-      /* nav abre em bloco quando marcado */
       .menu-toggle:checked + label + nav{display:block}
-      nav ul{flex-direction:column; align-items:center; padding:.25rem 0}
+      nav ul{flex-direction:column; align-items:center; padding:.25rem 0; background:rgba(245,239,230,.98); border:1px solid var(--border); border-radius:12px}
 
-      .brand-logo{height:90px}
-      header.scrolled .brand-logo{height:76px}
+      /* logo maior no mobile, sem reflow no scroll */
+      .brand-logo{height:var(--logo-h-mobile)}
+      header.scrolled .brand-logo{transform: scale(var(--logo-scale-scrolled));}
 
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
       .portrait-circle{width:240px;height:240px}
+    }
+
+    /* Acessibilidade: reduz animação se preferido */
+    @media (prefers-reduced-motion: reduce){
+      .brand-logo{transition:none}
+      nav a::after{transition:none}
     }
   </style>
 
@@ -321,36 +330,27 @@
   </footer>
 
   <script>
-    // Ano no rodapé
+    // Ano
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Header: sombra ao rolar + recalcula âncora (evita título cortado)
+    // Header: adiciona/remover classe scrolled (sem recalcular offset a cada scroll)
     const header = document.getElementById('topbar');
-    function setOffset(){ document.documentElement.style.setProperty('--anchor-offset', header.offsetHeight + 'px'); }
-    function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); setOffset(); }
+    function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); }
+    window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
-    window.addEventListener('resize', setOffset);
-    window.addEventListener('scroll', onScroll);
 
-    // Fecha o menu após clique no mobile
+    // Define offset das âncoras uma vez (load/resize) – evita “sacudir”
+    function setOffset(){
+      const h = header.offsetHeight;
+      document.documentElement.style.setProperty('--anchor-offset', h + 'px');
+    }
+    window.addEventListener('load', setOffset);
+    window.addEventListener('resize', setOffset);
+
+    // Fecha o menu após clique no mobile (e revalida offset)
     document.querySelectorAll('nav a').forEach(a=>{
       a.addEventListener('click',()=>{ const cb=document.getElementById('menu'); if(cb) cb.checked=false; setOffset(); });
     });
-
-    // Rastreamento simples de cliques externos (se gtag ativo)
-    (function(){
-      function trackLink(ev){
-        try{
-          var el = ev.currentTarget;
-          var eventName = el.getAttribute('data-gtag-event') || 'click';
-          var eventLabel = el.getAttribute('data-gtag-label') || el.href || el.getAttribute('aria-label') || 'link';
-          if (typeof gtag === 'function'){
-            gtag('event', eventName, { 'event_category':'engagement', 'event_label': eventLabel });
-          }
-        }catch(e){}
-      }
-      document.querySelectorAll('a.gtag-out').forEach(a=>a.addEventListener('click', trackLink));
-    })();
   </script>
 </body>
 </html>
