@@ -22,11 +22,11 @@
       --s4:24px; --s6:48px;
 
       --anchor-offset:120px;
-      --header-pad:.8rem;
+      --header-pad:.7rem; /* ligeiramente menor para reduzir o topo */
 
       /* tamanhos da logomarca (topo e rodapé idênticos) */
-      --logo-h-desktop:160px;
-      --logo-h-mobile:120px;
+      --logo-h-desktop:180px;  /* ↑ aumentei */
+      --logo-h-mobile:130px;   /* ↑ aumentei */
       --logo-scale-scrolled:.9;
     }
 
@@ -61,16 +61,17 @@
         "title title"
         "menu  logo"
         "nav   nav";
-      row-gap:.6rem;
+      row-gap:.4rem; /* ↓ menos espaço vertical entre linhas do topo */
       align-items:center;
       padding:var(--header-pad) 0;
     }
     .brand-info{
       grid-area:title; text-align:center; color:var(--white);
-      display:flex; flex-direction:column; gap:.15rem;
+      display:flex; flex-direction:column; gap:.05rem; /* ↓ diminui o espaço entre as linhas */
+      line-height:1.15;                                  /* ↓ linha mais “compacta” */
     }
     .brand-info b{font-weight:800; letter-spacing:.2px; font-size:clamp(1.05rem,2vw,1.35rem)}
-    .brand-info small{opacity:.95}
+    .brand-info small{opacity:.95; font-size:clamp(.9rem,1.6vw,1rem)}
 
     .menu-toggle{display:none}
     .menu-btn{
@@ -94,18 +95,18 @@
     nav{grid-area:nav; justify-self:center; width:100%}
     nav ul{
       display:flex; justify-content:center; flex-wrap:wrap; gap:12px;
-      list-style:none; margin:0; padding:8px 0;
+      list-style:none; margin:0; padding:6px 0; /* ↓ um pouco menos alto */
     }
     nav a{
-      color:var(--white); font-weight:600; padding:.45rem .6rem; border-radius:10px; position:relative;
+      color:var(--white); font-weight:600; padding:.4rem .6rem; border-radius:10px; position:relative;
     }
     nav a::after{
-      content:""; position:absolute; left:.6rem; right:.6rem; bottom:.2rem; height:2px;
+      content:""; position:absolute; left:.6rem; right:.6rem; bottom:.15rem; height:2px;
       background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px;
     }
     nav a:hover::after{transform:scaleX(1)}
 
-    /* ===== Quadros de texto (aplicado a TODAS as seções de conteúdo) ===== */
+    /* ===== Quadros de texto ===== */
     .section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
     .section-box{
       background-color:var(--card);
@@ -115,12 +116,17 @@
       color:var(--text);
     }
 
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:stretch}
     .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4)}
-    .portrait-circle{
-      width:300px; height:300px; border-radius:50%; object-fit:cover;
-      box-shadow:var(--shadow); display:block; margin:auto;
+
+    /* ===== FOTO GRANDE, PREENCHENDO O QUADRO ===== */
+    .photo-box{padding:0; overflow:hidden}          /* sem padding para colar a imagem nas bordas */
+    .photo-fill{
+      width:100%; height:100%; min-height:360px;    /* altura mínima agradável */
+      display:block; object-fit:cover;              /* cobre todo o quadro */
+      border-radius:var(--radius);                  /* cantos iguais ao quadro */
     }
+
     .img-cover{width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow)}
 
     /* ===== Botões (dourado) ===== */
@@ -159,7 +165,9 @@
 
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
-      .portrait-circle{width:240px; height:240px}
+
+      /* foto cheia também no mobile */
+      .photo-fill{min-height:280px}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -171,7 +179,7 @@
   <!-- ===== HEADER ===== -->
   <header id="topbar">
     <div class="container nav">
-      <!-- Linha 1: título centralizado -->
+      <!-- Linha 1: título centralizado (com menos espaçamento) -->
       <div class="brand-info" aria-label="Identidade do site">
         <b>Laura Sathler</b>
         <small>Psicóloga · CRP 04/30866</small>
@@ -206,8 +214,9 @@
           <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
           <p>Esse caminho nem sempre é simples; ele exige presença e coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
         </div>
-        <div class="section-box">
-          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
+        <!-- Foto preenchendo o quadro -->
+        <div class="section-box photo-box">
+          <img class="photo-fill" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
@@ -215,15 +224,15 @@
     <!-- Sobre mim -->
     <section id="sobre" class="section">
       <div class="container grid-2">
-        <div class="section-box" style="text-align:center">
-          <img class="portrait-circle" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
-        </div>
         <div class="section-box">
           <h2>Sobre mim</h2>
           <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866), formada pela PUC Minas e com mais de 10 anos de experiência clínica. Minha trajetória é movida pelo desejo de estar com as pessoas em seus processos mais autênticos, oferecendo um espaço seguro e de confiança.</p>
           <p>Minha prática se baseia na abordagem <strong>humanista-existencial</strong>, que acredita na singularidade de cada ser humano e no poder do encontro verdadeiro. No consultório, valorizo o diálogo aberto, a escuta atenta e a presença genuína, porque acredito que é na relação que novas formas de viver e sentir podem florescer.</p>
           <p>A terapia é, para mim, um convite: olhar para dentro, compreender as próprias dores, reconhecer os recursos internos e, pouco a pouco, construir caminhos mais leves, conscientes e significativos.</p>
           <p>Se você busca um espaço de acolhimento e transformação, será uma alegria caminhar junto com você nessa jornada.</p>
+        </div>
+        <div class="section-box">
+          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
