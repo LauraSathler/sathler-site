@@ -7,22 +7,38 @@
   <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <style>
     :root{
-      --bg:#f5efe6; --bg2:#faf6f1; --card:#ffffff; --text:#2b2b2b; --muted:#6a6a6a;
-      --accent:#7aa6a8; --accent-2:#f1c5a6; --border:#e9dfd6;
-      --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08);
-      --maxw:1080px; --s4:1.5rem; --s6:3rem;
+      /* Paleta inspirada na sua imagem */
+      --brand:#0c6a72;           /* teal principal (fundo) */
+      --brand-2:#0a5960;         /* teal escurecido (rodapé, hover leve) */
+      --card:#ffffff;            /* cartões */
+      --text:#2b2b2b;            /* texto nos cartões */
+      --muted:#6a7a80;           /* texto sutil */
+      --accent:#f1c5a6;          /* pêssego suave p/ detalhes */
+      --white:#ffffff;
+
+      --border:#e9dfd6;
+      --radius:18px;
+      --shadow:0 10px 24px rgba(0,0,0,.08);
+      --maxw:1080px;
+      --s4:1.5rem; --s6:3rem;
+
       --anchor-offset: 120px;
-      --header-pad: .8rem;
-      --logo-h-desktop: 140px;     /* altura da logo (topo e rodapé) no desktop */
-      --logo-h-mobile: 100px;      /* altura da logo (topo e rodapé) no mobile  */
-      --logo-scale-scrolled: .88;  /* escala no scroll (sem reflow) */
+      --header-pad:.8rem;
+
+      /* Tamanhos da logo (topo e rodapé) */
+      --logo-h-desktop: 160px;
+      --logo-h-mobile: 120px;
+
+      /* animação sutil sem “tremor” */
+      --logo-scale-scrolled:.9;
     }
+
     *,*::before,*::after{box-sizing:border-box}
     body{
       margin:0;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg,var(--bg),var(--bg2) 40%,var(--bg) 100%);
+      background:var(--brand);
       line-height:1.6
     }
     h1,h2,h3{line-height:1.2;margin:0 0 .75rem}
@@ -31,30 +47,48 @@
     .muted{color:var(--muted)}
     .container{width:min(var(--maxw),92vw);margin-inline:auto}
 
-    /* ===== HEADER (logo à direita, estável) ===== */
+    /* ===== Header em 2 linhas =====
+       Linha 1: título centralizado
+       Linha 2: navegação ao centro + logo à direita                       */
     header{
       position:sticky; top:0; z-index:30;
-      background:rgba(245,239,230,.92);
-      backdrop-filter:saturate(160%) blur(8px);
-      border-bottom:1px solid var(--border);
+      background:color-mix(in srgb, var(--brand) 92%, #000 0%);
+      color:var(--white);
+      border-bottom:1px solid rgba(255,255,255,.15);
       transition: box-shadow .2s ease, background-color .2s ease;
+      backdrop-filter:saturate(160%) blur(6px);
     }
     .nav{
-      display:grid; align-items:center; column-gap:1rem;
+      display:grid;
+      grid-template-columns: 1fr auto;       /* nav ocupa / logo à direita */
+      grid-template-areas:
+        "title  title"
+        "nav    logo";
+      row-gap:.6rem;
+      align-items:center;
       padding:var(--header-pad) 0;
-      grid-template-columns:auto 1fr auto;
-      grid-template-areas:"brand nav logo";
     }
-    .brand{grid-area:brand; display:flex; flex-direction:column; line-height:1.15}
-    .brand b{font-weight:800; font-size:clamp(1.05rem, 1.8vw, 1.25rem)}
-    .brand small{color:var(--muted); font-size:.95rem}
 
+    /* Linha 1 – título centralizado */
+    .brand-info{
+      grid-area:title;
+      text-align:center;
+      display:flex; flex-direction:column; align-items:center; gap:.15rem;
+      color:var(--white);
+    }
+    .brand-info b{font-weight:800; letter-spacing:.2px; font-size:clamp(1.05rem, 2vw, 1.35rem)}
+    .brand-info small{opacity:.9}
+
+    /* Linha 2 – navegação e logo */
     nav{grid-area:nav; justify-self:center}
     nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0; flex-wrap:wrap}
-    nav a{position:relative; padding:.45rem .6rem; border-radius:10px; font-weight:600}
+    nav a{
+      color:var(--white);
+      position:relative; padding:.45rem .6rem; border-radius:10px; font-weight:600
+    }
     nav a::after{
       content:""; position:absolute; left:.6rem; right:.6rem; bottom:.2rem;
-      height:2px; background:color-mix(in srgb, var(--accent) 65%, #fff);
+      height:2px; background:var(--accent);
       transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px;
     }
     nav a:hover::after{transform:scaleX(1)}
@@ -62,25 +96,31 @@
     .logo-wrap{grid-area:logo; justify-self:end}
     .brand-logo{
       height:var(--logo-h-desktop); width:auto; display:block;
-      transform-origin:right center;
-      transition: transform .2s ease;
+      transform-origin:right center; transition: transform .2s ease;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.15));
     }
-    header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.07); background:rgba(245,239,230,.96)}
+    header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.25)}
     header.scrolled .brand-logo{transform: scale(var(--logo-scale-scrolled));}
 
-    /* ===== MENU MOBILE ===== */
+    /* ===== Menu Mobile ===== */
     .menu-toggle{display:none}
     .menu-btn{
-      display:none; grid-area:menu; justify-self:center;
-      border:1px solid var(--border); border-radius:10px;
+      display:none;
+      border:1px solid rgba(255,255,255,.35);
+      color:var(--white);
+      border-radius:10px;
       padding:.5rem .75rem; font-weight:700; cursor:pointer; background:transparent;
+      justify-self:center;
     }
 
-    /* ===== SEÇÕES ===== */
+    /* ===== Seções ===== */
     section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
     .card{
-      background:var(--card); border:1px solid var(--border);
-      border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--s4)
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:var(--s4)
     }
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:center}
     .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4); align-items:stretch}
@@ -97,7 +137,7 @@
     /* CTAs / Ícones */
     .mini-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem}
     .btn{display:inline-block;border-radius:12px;padding:.7rem 1rem;font-weight:700;border:1px solid var(--border);min-width:180px;text-align:center}
-    .btn-primary{background:var(--accent);color:#fff;border-color:transparent}
+    .btn-primary{background:var(--brand);color:var(--white);border-color:transparent}
     .btn-primary:hover{filter:brightness(.96)}
 
     .social{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
@@ -105,35 +145,40 @@
     .social a:hover{transform:translateY(-1px);filter:brightness(0.98)}
     .social svg{width:52px;height:52px;display:block}
 
-    /* ===== RODAPÉ ===== */
-    footer{padding:2rem 0;border-top:1px solid var(--border);color:var(--muted);}
+    /* ===== Rodapé ===== */
+    footer{
+      padding:2rem 0;
+      background:var(--brand-2);
+      color:var(--white);
+      border-top:1px solid rgba(255,255,255,.15);
+    }
     .footer-content{
       display:grid; align-items:center; column-gap:1rem;
       grid-template-columns:1fr auto; /* texto ocupa, logo à direita */
     }
     .footer-text{text-align:center}
-    .footer-logo{
-      height:var(--logo-h-desktop); width:auto; display:block;
-    }
+    .footer-logo{height:var(--logo-h-desktop); width:auto; display:block; filter: drop-shadow(0 4px 12px rgba(0,0,0,.15));}
 
-    /* ===== RESPONSIVO ===== */
-    @media(max-width:900px){
-      /* header vira 2 linhas: [brand | logo] / [menu] */
+    /* ===== Responsivo ===== */
+    @media (max-width:900px){
       .nav{
         grid-template-columns:1fr auto;
         grid-template-areas:
-          "brand logo"
-          "menu  menu";
+          "title  title"
+          "menu   logo"
+          "nav    nav";
         row-gap:.5rem;
       }
-      .menu-btn{display:block}
-      nav{grid-area:menu; width:100%}
-      .menu-toggle:not(:checked) + label + nav{display:none}
-      .menu-toggle:checked + label + nav{display:block}
+      .menu-btn{display:inline-flex}
+      nav{width:100%}
+      .menu-toggle:not(:checked) + label + .logo-wrap + nav{display:none}
+      .menu-toggle:checked + label + .logo-wrap + nav{display:block}
       nav ul{
         flex-direction:column; align-items:center; padding:.25rem 0;
-        background:rgba(245,239,230,.98); border:1px solid var(--border); border-radius:12px
+        background:color-mix(in srgb, var(--brand) 96%, #000 0%);
+        border:1px solid rgba(255,255,255,.15); border-radius:12px
       }
+
       .brand-logo{height:var(--logo-h-mobile)}
       header.scrolled .brand-logo{transform: scale(var(--logo-scale-scrolled));}
 
@@ -141,7 +186,6 @@
       .grid-3{grid-template-columns:1fr}
       .portrait-circle{width:240px;height:240px}
 
-      /* footer usa a mesma proporção da logo do topo no mobile */
       .footer-logo{height:var(--logo-h-mobile)}
       .footer-content{grid-template-columns:1fr auto}
     }
@@ -151,31 +195,25 @@
       nav a::after{transition:none}
     }
   </style>
-
-  <!-- (Opcional) Google tag (gtag.js) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGB79CFFK8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QGB79CFFK8');
-  </script> -->
 </head>
 <body>
   <!-- ===== HEADER ===== -->
   <header id="topbar">
     <div class="container nav">
-      <!-- Esquerda: Nome e CRP -->
-      <div class="brand" aria-label="Identidade do site">
+      <!-- Linha 1: título centralizado -->
+      <div class="brand-info" aria-label="Identidade do site">
         <b>Laura Sathler</b>
         <small>Psicóloga · CRP 04/30866</small>
       </div>
 
-      <!-- Mobile: botão + checkbox -->
+      <!-- Linha 2: menu + logo à direita -->
       <input id="menu" class="menu-toggle" type="checkbox" />
       <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
 
-      <!-- Centro/abaixo (mobile): Navegação -->
+      <div class="logo-wrap">
+        <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
+      </div>
+
       <nav aria-label="principal">
         <ul>
           <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
@@ -185,16 +223,11 @@
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
-
-      <!-- Direita: Logomarca isolada -->
-      <div class="logo-wrap">
-        <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
-      </div>
     </div>
   </header>
 
   <main>
-    <!-- ===== O que é Psicoterapia? ===== -->
+    <!-- O que é Psicoterapia? -->
     <section id="psicoterapia">
       <div class="container grid-2">
         <div class="card text">
@@ -208,7 +241,7 @@
       </div>
     </section>
 
-    <!-- ===== Sobre mim ===== -->
+    <!-- Sobre mim -->
     <section id="sobre">
       <div class="container grid-2">
         <div class="media" style="text-align:center">
@@ -224,7 +257,7 @@
       </div>
     </section>
 
-    <!-- ===== Especialidades ===== -->
+    <!-- Especialidades -->
     <section id="especialidades">
       <div class="container">
         <div class="card" style="margin-bottom: var(--s4); text-align:center">
@@ -290,7 +323,7 @@
       </div>
     </section>
 
-    <!-- ===== Quando procurar ===== -->
+    <!-- Quando procurar -->
     <section id="quando">
       <div class="container card">
         <h2>Quando buscar terapia?</h2>
@@ -305,7 +338,7 @@
       </div>
     </section>
 
-    <!-- ===== Contato ===== -->
+    <!-- Contato -->
     <section id="contato">
       <div class="container card" style="text-align:center">
         <h2>Agende sua sessão</h2>
@@ -320,7 +353,7 @@
           <a href="mailto:Laurasathler@yahoo.com.br" aria-label="E-mail">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="12" width="56" height="40" rx="8" fill="#4f7cff"/><path fill="#fff" d="M10 20l22 14L54 20v6L32 40 10 26z"/></svg>
           </a>
-          <!-- Instagram (use o link completo, se preferir: com igsh/utm) -->
+          <!-- Instagram -->
           <a href="https://www.instagram.com/laurasathler_psi" target="_blank" rel="noopener" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
               <defs>
@@ -340,7 +373,7 @@
     </section>
   </main>
 
-  <!-- ===== RODAPÉ ===== -->
+  <!-- Rodapé -->
   <footer>
     <div class="container footer-content">
       <div class="footer-text">© <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866</div>
@@ -349,16 +382,16 @@
   </footer>
 
   <script>
-    // Ano
+    // Ano no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Header: sombra ao rolar (sem alterar altura -> sem “tremor”)
+    // Efeito sutil no header (sem alterar altura => sem tremor)
     const header = document.getElementById('topbar');
     function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); }
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
 
-    // Define offset de âncora em load/resize (evita cortes ao navegar por hash)
+    // Ajuste do offset das âncoras
     function setOffset(){
       const h = header.offsetHeight;
       document.documentElement.style.setProperty('--anchor-offset', h + 'px');
@@ -366,7 +399,7 @@
     window.addEventListener('load', setOffset);
     window.addEventListener('resize', setOffset);
 
-    // Fecha o menu após clique no mobile e atualiza offset
+    // Fecha o menu após clique no mobile
     document.querySelectorAll('nav a').forEach(a=>{
       a.addEventListener('click',()=>{
         const cb=document.getElementById('menu');
