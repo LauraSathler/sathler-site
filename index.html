@@ -9,7 +9,7 @@
     :root{
       /* Paleta */
       --brand:#146B6D;     /* fundo principal */
-      --brand-2:#104E50;   /* rodapé */
+      --brand-2:#104E50;   /* rodapé / faixas escuras */
       --card:#F6F5F0;      /* quadros de texto */
       --text:#3E3E3E;      /* texto */
       --gold:#C6A56B;      /* títulos/botões */
@@ -19,18 +19,16 @@
       --maxw:1080px;
       --radius:12px;
       --shadow:0 2px 8px rgba(0,0,0,.10);
-
-      --space-lg:56px;
-      --space-md:28px;
-      --space-sm:14px;
-
-      --anchor-offset:120px;
+      --space-xl:72px; --space-lg:56px; --space-md:28px; --space-sm:14px;
 
       /* Header/Logo */
-      --header-pad:.6rem;
       --logo-h-desktop:170px;
       --logo-h-mobile:120px;
       --logo-scale-scrolled:.9;
+
+      /* Hero */
+      --hero-py: clamp(56px, 9vw, 110px);
+      --hero-gap: 18px;
     }
 
     *,*::before,*::after{box-sizing:border-box}
@@ -43,24 +41,21 @@
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
+    .container{ width:min(var(--maxw), 92vw); margin-inline:auto }
 
     /* Tipografia e links */
     h1,h2,h3{
       color:var(--gold); font-weight:600; line-height:1.2;
-      margin:0 0 var(--space-sm);
-      letter-spacing:.2px;
+      margin:0 0 var(--space-sm); letter-spacing:.2px;
     }
+    h1{ font-size:clamp(1.4rem, 4vw, 2rem) }
     h2{ font-size:clamp(1.25rem, 2.2vw, 1.6rem) }
     h3{ font-size:clamp(1.05rem, 1.8vw, 1.25rem) }
-    p{ margin:0 0 0.9rem; font-size:clamp(.98rem,1.2vw,1.05rem) }
-    ul{ margin: .2rem 0 1rem; padding-left:1.15rem }
-    li{ margin:.35rem 0 }
+    p{ margin:0 0 .9rem; font-size:clamp(.98rem,1.2vw,1.06rem) }
     a{ color:var(--mint); text-decoration:none; transition:.25s }
     a:hover{ opacity:.9 }
 
-    .container{ width:min(var(--maxw), 92vw); margin-inline:auto }
-
-    /* ===== Header ===== */
+    /* ===== Header minimal ===== */
     header{
       position:sticky; top:0; z-index:30;
       background:color-mix(in srgb, var(--brand) 96%, #000 0%);
@@ -68,34 +63,19 @@
       backdrop-filter:saturate(150%) blur(6px);
       transition:box-shadow .2s ease;
     }
-    .nav{ display:grid; row-gap:.35rem; padding:var(--header-pad) 0; }
-    @media (min-width:901px){
-      .nav{
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-          "brand logo"
-          "nav   logo";
-      }
+    .nav{
+      display:grid; align-items:center;
+      grid-template-columns:1fr auto; column-gap:16px;
+      padding:10px 0;
     }
-    @media (max-width:900px){
-      .nav{
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-          "brand logo"
-          "menu  menu"
-          "nav   nav";
-      }
-    }
-
     .brand-info{
-      grid-area:brand; text-align:center; color:#fff;
-      display:flex; flex-direction:column; gap:.1rem; line-height:1.12;
+      text-align:center; color:#fff;
+      display:flex; flex-direction:column; gap:2px; line-height:1.1;
       justify-self:center;
     }
     .brand-info b{ font-weight:800; font-size:clamp(1.08rem, 2vw, 1.35rem); letter-spacing:.2px; }
     .brand-info small{ opacity:.96; font-size:clamp(.92rem,1.6vw,1rem); }
-
-    .logo-wrap{ grid-area:logo; justify-self:end }
+    .logo-wrap{ justify-self:end }
     .brand-logo{
       height:var(--logo-h-desktop); width:auto; display:block;
       transform-origin:right center; transition:transform .2s ease;
@@ -104,19 +84,15 @@
     header.scrolled{ box-shadow:0 8px 24px rgba(0,0,0,.25) }
     header.scrolled .brand-logo{ transform:scale(var(--logo-scale-scrolled)) }
 
-    /* Menu */
-    .menu-toggle{ display:none }
-    .menu-btn{
-      grid-area:menu; justify-self:center; display:none;
-      background:var(--gold); color:var(--card);
-      border:none; border-radius:8px; padding:10px 20px; font-weight:700; cursor:pointer; transition:.25s;
+    /* Menu abaixo do header (fixo visualmente) */
+    .menu-bar{
+      background:color-mix(in srgb, var(--brand) 94%, #000 0%);
+      border-top:1px solid rgba(255,255,255,.10);
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
-    .menu-btn:hover{ background:var(--mint); color:var(--brand) }
-
-    nav{ grid-area:nav; justify-self:center; width:100% }
     nav ul{
-      display:flex; justify-content:center; gap:10px;
-      list-style:none; margin:0; padding:6px 0; flex-wrap:wrap;
+      display:flex; justify-content:center; gap:12px;
+      list-style:none; margin:0; padding:10px 0; flex-wrap:wrap;
     }
     nav a{
       color:#fff; font-weight:600; padding:.35rem .6rem; border-radius:8px; position:relative
@@ -128,15 +104,51 @@
     }
     nav a:hover::after{ transform:scaleX(1) }
 
+    /* Mobile: menu colapsável */
+    .menu-toggle{ display:none }
+    .menu-btn{
+      display:none; margin:8px auto 0;
+      background:var(--gold); color:var(--card);
+      border:none; border-radius:8px; padding:10px 20px; font-weight:700; cursor:pointer; transition:.25s;
+    }
+    .menu-btn:hover{ background:var(--mint); color:var(--brand) }
+
     @media (max-width:900px){
-      .menu-btn{ display:inline-flex; align-items:center; gap:.4rem }
+      .brand-logo{ height:var(--logo-h-mobile) }
+      .menu-btn{ display:block }
       .menu-toggle:not(:checked) ~ nav{ display:none }
       .menu-toggle:checked ~ nav{ display:block }
-      .brand-logo{ height:var(--logo-h-mobile) }
+    }
+
+    /* ===== Hero em faixa ===== */
+    .hero{
+      padding-block: var(--hero-py);
+      background:
+        radial-gradient(800px 400px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, color-mix(in srgb, var(--brand) 92%, #000 0%), var(--brand));
+      color:#fff;
+    }
+    .hero-inner{
+      display:grid; gap:var(--hero-gap);
+      grid-template-columns: 1fr auto;
+      align-items:center;
+    }
+    .hero-title{
+      display:flex; flex-direction:column; gap:6px;
+      text-align:left;
+    }
+    .hero-title h1{ color:#fff; margin:0 }
+    .hero-title p{ color:#eaf7f6; margin:0; max-width:60ch }
+    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px }
+    .hero-logo{ display:none } /* não repetir logo aqui; já está no topo */
+    @media (max-width:900px){
+      .hero-inner{ grid-template-columns:1fr }
+      .hero-title{ text-align:center }
+      .hero-cta{ justify-content:center }
     }
 
     /* ===== Seções ===== */
-    .section{ padding-block: var(--space-lg); scroll-margin-top:var(--anchor-offset) }
+    .section{ padding-block: var(--space-lg); }
     @media (max-width:900px){ .section{ padding-block: 42px } }
 
     /* Quadros de texto */
@@ -175,7 +187,7 @@
     .cover-img{ width:100%; height:100%; object-fit:cover; display:block }
     @media (max-width:900px){ .media-frame{ aspect-ratio:3/2 } }
 
-    /* Ajuste de largura do texto (desktop) */
+    /* Ajuste leve na primeira seção (texto mais largo) */
     @media (min-width:901px){
       #psicoterapia .container.grid-2{ grid-template-columns: 1.25fr 0.95fr; }
       #psicoterapia .section-box{ padding:28px 28px 32px; }
@@ -193,6 +205,17 @@
     .social{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px }
     .social a{ display:inline-flex; width:52px; height:52px; border-radius:12px; overflow:hidden }
 
+    /* Faixa CTA larga antes do rodapé */
+    .cta-band{
+      background:var(--brand-2);
+      padding-block: clamp(36px, 7vw, 72px);
+      color:#fff;
+      text-align:center;
+    }
+    .cta-band h2{ color:#fff; margin-bottom:8px }
+    .cta-band p{ color:#eaf7f6; margin:0 0 14px }
+    .cta-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center }
+
     /* Rodapé */
     footer{
       background:var(--brand-2); color:#fff;
@@ -208,7 +231,6 @@
     @media (max-width:900px){ .footer-logo{ height:var(--logo-h-mobile) } }
   </style>
 </head>
-
 <body>
   <!-- ===== HEADER ===== -->
   <header id="topbar">
@@ -217,28 +239,40 @@
         <b>Laura Sathler</b>
         <small>Psicóloga · CRP 04/30866</small>
       </div>
-
-      <!-- Mobile: botão + checkbox -->
-      <input id="menu" class="menu-toggle" type="checkbox" />
-      <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
-
-      <!-- Logo à direita -->
       <div class="logo-wrap">
         <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
       </div>
-
-      <!-- Navegação centralizada -->
-      <nav aria-label="principal">
-        <ul>
-          <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
-          <li><a href="#sobre">Sobre mim</a></li>
-          <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#quando">Quando procurar</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
+    </div>
+    <div class="menu-bar">
+      <div class="container">
+        <input id="menu" class="menu-toggle" type="checkbox" />
+        <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
+        <nav aria-label="principal">
+          <ul>
+            <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
+            <li><a href="#sobre">Sobre mim</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#quando">Quando procurar</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-title">
+        <h1>Psicoterapia humanista-existencial</h1>
+        <p>Espaço de escuta, acolhimento e reflexão. Atendimento on-line com cuidado, presença e respeito ao seu ritmo.</p>
+        <div class="hero-cta">
+          <a class="btn" href="https://wa.me/5531991593800?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia.">Agendar sessão</a>
+          <a class="btn" href="#especialidades">Ver especialidades</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <main>
     <!-- ===== Psicoterapia ===== -->
@@ -319,15 +353,6 @@
             <div class="mini-cta"><a class="btn" href="#contato">Atendimento para casal</a></div>
           </div>
         </div>
-
-        <div class="section-box" style="text-align:center; margin-top:var(--space-md)">
-          <strong>Não precisa enfrentar tudo sozinho(a).</strong>
-          <p style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
-          <div class="mini-cta">
-            <a class="btn" href="https://wa.me/5531991593800?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia.">Agendar sessão</a>
-            <a class="btn" href="mailto:Laurasathler@yahoo.com.br">Falar por e-mail</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -347,17 +372,24 @@
       </div>
     </section>
 
-    <!-- ===== Contato (corrigido) ===== -->
+    <!-- ===== CTA Band ===== -->
+    <section class="cta-band">
+      <div class="container">
+        <h2>Pronto(a) para dar o próximo passo?</h2>
+        <p>Agende uma conversa inicial — é um bom começo para ganhar clareza.</p>
+        <div class="cta-actions">
+          <a class="btn" href="https://wa.me/5531991593800?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia.">Falar no WhatsApp</a>
+          <a class="btn" href="mailto:Laurasathler@yahoo.com.br">Falar por e-mail</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contato ===== -->
     <section id="contato" class="section">
       <div class="container">
         <div class="section-box" style="text-align:center">
           <h2>Agende sua sessão</h2>
           <p>Estou à disposição para conversar e iniciar um processo terapêutico com você.</p>
-
-          <div class="mini-cta" style="justify-content:center">
-            <a class="btn" href="https://wa.me/5531991593800?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia.">📱 WhatsApp</a>
-            <a class="btn" href="mailto:Laurasathler@yahoo.com.br">📧 E-mail</a>
-          </div>
 
           <div class="social" aria-label="Canais de contato">
             <!-- WhatsApp -->
@@ -401,28 +433,11 @@
     // Ano dinâmico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sombra do topo ao rolar (sem alterar altura)
+    // Header: sombra ao rolar
     const header = document.getElementById('topbar');
     function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); }
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
-
-    // Offset das âncoras conforme altura real do header
-    function setOffset(){
-      const h = header.offsetHeight;
-      document.documentElement.style.setProperty('--anchor-offset', h + 'px');
-    }
-    window.addEventListener('load', setOffset);
-    window.addEventListener('resize', setOffset);
-
-    // Fecha menu mobile ao clicar num link e recalcula offset
-    document.querySelectorAll('nav a').forEach(a=>{
-      a.addEventListener('click',()=>{
-        const cb=document.getElementById('menu');
-        if(cb) cb.checked=false;
-        setOffset();
-      });
-    });
   </script>
 </body>
 </html>
