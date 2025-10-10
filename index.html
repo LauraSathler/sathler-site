@@ -7,7 +7,7 @@
   <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <style>
     :root{
-      /* Paleta harmonizada */
+      /* Paleta */
       --brand:#146B6D;     /* fundo principal */
       --brand-2:#104E50;   /* rodapé */
       --card:#F6F5F0;      /* quadros de texto */
@@ -15,11 +15,16 @@
       --gold:#C6A56B;      /* títulos/botões */
       --mint:#B5E0DC;      /* hover/links */
 
-      /* Escalas e layout */
+      /* Layout & tipografia */
       --maxw:1080px;
       --radius:12px;
       --shadow:0 2px 8px rgba(0,0,0,.10);
-      --s2:14px; --s3:20px; --s4:24px; --s5:32px; --s6:52px;
+
+      /* Ritmo vertical (desktop / mobile) */
+      --space-lg:56px;
+      --space-md:28px;
+      --space-sm:14px;
+
       --anchor-offset:120px;
 
       /* Header/Logo */
@@ -42,20 +47,21 @@
 
     /* Tipografia e links */
     h1,h2,h3{
-      color:var(--gold); font-weight:600; line-height:1.2; margin:0 0 .6rem;
+      color:var(--gold); font-weight:600; line-height:1.2;
+      margin:0 0 var(--space-sm);
       letter-spacing:.2px;
     }
     h2{ font-size:clamp(1.25rem, 2.2vw, 1.6rem) }
     h3{ font-size:clamp(1.05rem, 1.8vw, 1.25rem) }
-    p{ margin:0 0 1rem; font-size:clamp(.98rem,1.2vw,1.05rem) }
-    ul{ margin:.2rem 0 1rem; padding-left:1.1rem }
-    li{ margin:.3rem 0 }
+    p{ margin:0 0 0.9rem; font-size:clamp(.98rem,1.2vw,1.05rem) }
+    ul{ margin: .2rem 0 1rem; padding-left:1.15rem }
+    li{ margin:.35rem 0 }
     a{ color:var(--mint); text-decoration:none; transition:.25s }
     a:hover{ opacity:.9 }
 
     .container{ width:min(var(--maxw), 92vw); margin-inline:auto }
 
-    /* ===== Header (estável, sem “tremor”) ===== */
+    /* ===== Header (estável) ===== */
     header{
       position:sticky; top:0; z-index:30;
       background:color-mix(in srgb, var(--brand) 96%, #000 0%);
@@ -66,7 +72,7 @@
     .nav{
       display:grid; row-gap:.35rem; padding:var(--header-pad) 0;
     }
-    /* Desktop: [nome] [logo] na primeira linha; menu central abaixo do nome */
+    /* Desktop: [brand] [logo] 1ª linha; menu central abaixo */
     @media (min-width:901px){
       .nav{
         grid-template-columns: 1fr auto;
@@ -75,7 +81,7 @@
           "nav   logo";
       }
     }
-    /* Mobile: nome + logo; botão + menu em linhas próprias */
+    /* Mobile */
     @media (max-width:900px){
       .nav{
         grid-template-columns: 1fr auto;
@@ -86,20 +92,13 @@
       }
     }
 
-    /* Nome + CRP centralizados e com linhas mais próximas */
     .brand-info{
       grid-area:brand; text-align:center; color:#fff;
-      display:flex; flex-direction:column; gap:.1rem; line-height:1.1;
+      display:flex; flex-direction:column; gap:.1rem; line-height:1.12;
       justify-self:center;
     }
-    .brand-info b{
-      font-weight:800;
-      font-size:clamp(1.08rem, 2vw, 1.35rem);
-      letter-spacing:.2px;
-    }
-    .brand-info small{
-      opacity:.96; font-size:clamp(.92rem,1.6vw,1rem);
-    }
+    .brand-info b{ font-weight:800; font-size:clamp(1.08rem, 2vw, 1.35rem); letter-spacing:.2px; }
+    .brand-info small{ opacity:.96; font-size:clamp(.92rem,1.6vw,1rem); }
 
     .logo-wrap{ grid-area:logo; justify-self:end }
     .brand-logo{
@@ -141,50 +140,57 @@
       .brand-logo{ height:var(--logo-h-mobile) }
     }
 
-    /* ===== Seções ===== */
-    .section{ padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset) }
+    /* ===== Seções (ritmo padronizado) ===== */
+    .section{ padding-block: var(--space-lg); scroll-margin-top:var(--anchor-offset) }
+    @media (max-width:900px){ .section{ padding-block: 42px } }
 
-    /* Quadros de texto padronizados (aplicados em TODAS as cópias de texto) */
+    /* Quadros de texto */
     .section-box{
       background:var(--card); color:var(--text);
-      border-radius:var(--radius); padding:var(--s4); box-shadow:var(--shadow);
+      border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);
     }
-    .section-box p:last-child{ margin-bottom:0 }
+    .section-box :where(p,ul):last-child{ margin-bottom:0 }
 
-    /* Grades equilibradas */
+    /* Grades */
     .grid-2{
-      display:grid; gap:var(--s4);
-      grid-template-columns:1fr 1fr; align-items:stretch;
+      display:grid; gap: var(--space-md);
+      grid-template-columns: 1fr 1fr; align-items:stretch;
     }
     @media (max-width:900px){ .grid-2{ grid-template-columns:1fr } }
 
     .grid-3{
-      display:grid; gap:var(--s4);
-      grid-template-columns:repeat(3,1fr); align-items:stretch;
+      display:grid; gap: var(--space-md);
+      grid-template-columns: repeat(3, 1fr);
+      align-items:stretch;
     }
     @media (max-width:900px){ .grid-3{ grid-template-columns:1fr } }
 
-    /* Mídia: sem moldura; proporção controlada e consistente */
+    /* Cards das especialidades com altura igual e botões alinhados */
+    .grid-3 .section-box{
+      display:flex; flex-direction:column; gap:12px; /* ritmo interno */
+      min-height: 100%; /* equaliza visualmente */
+    }
+    .grid-3 .section-box ul{ margin:0 0 8px 1.15rem }
+    .grid-3 .mini-cta{ margin-top:auto; display:flex; justify-content:center }
+
+    /* Mídia (imagens) */
     .media-frame{
       border-radius:var(--radius); overflow:hidden; background:#0f5b5d;
-      /* equilíbrio de altura com texto ao lado */
-      aspect-ratio: 4 / 3; /* desktop */
-      display:block;
-    }
-    /* Mobile: um pouco mais baixo pra não “pesar” */
-    @media (max-width:900px){
-      .media-frame{ aspect-ratio: 3 / 2 }
+      display:block; height:100%; min-height: 360px; /* altura consistente no desktop */
     }
     .cover-img{ width:100%; height:100%; object-fit:cover; display:block }
+    @media (max-width:900px){
+      .media-frame{ min-height: 260px; }
+    }
 
     /* Botões */
     .btn{
       display:inline-block; background:var(--gold); color:var(--card);
       border:none; border-radius:8px; padding:10px 20px; font-weight:700;
       min-width:180px; text-align:center; transition:.25s; text-decoration:none;
+      line-height:1.1;
     }
     .btn:hover{ background:var(--mint); color:var(--brand) }
-    .mini-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:.75rem; justify-content:center }
 
     /* Ícones de contato */
     .social{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px }
@@ -194,7 +200,7 @@
     footer{
       background:var(--brand-2); color:#fff;
       border-top:1px solid rgba(255,255,255,.14);
-      padding:2rem 0;
+      padding: 28px 0;
     }
     .footer-content{ display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:1rem }
     .footer-text{ text-align:center }
@@ -275,7 +281,7 @@
     <!-- ===== Especialidades ===== -->
     <section id="especialidades" class="section">
       <div class="container">
-        <div class="section-box" style="text-align:center; margin-bottom:var(--s3)">
+        <div class="section-box" style="text-align:center; margin-bottom:var(--space-md)">
           <h2>Especialidades de atendimento</h2>
           <p class="muted">Mais do que diagnósticos, trabalho com histórias. Abaixo, situações comuns que podem indicar que é hora de buscar ajuda.</p>
         </div>
@@ -321,7 +327,7 @@
           </div>
         </div>
 
-        <div class="section-box" style="text-align:center; margin-top:var(--s3)">
+        <div class="section-box" style="text-align:center; margin-top:var(--space-md)">
           <strong>Não precisa enfrentar tudo sozinho(a).</strong>
           <p class="muted" style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
           <div class="mini-cta">
