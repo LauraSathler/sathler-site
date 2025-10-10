@@ -7,7 +7,7 @@
   <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <style>
     :root{
-      /* Paleta */
+      /* Paleta harmonizada */
       --brand:#146B6D;     /* fundo principal */
       --brand-2:#104E50;   /* rodapé */
       --card:#F6F5F0;      /* quadros de texto */
@@ -15,17 +15,17 @@
       --gold:#C6A56B;      /* títulos/botões */
       --mint:#B5E0DC;      /* hover/links */
 
-      /* Layout */
+      /* Escalas e layout */
       --maxw:1080px;
       --radius:12px;
       --shadow:0 2px 8px rgba(0,0,0,.10);
-      --s3:20px; --s4:24px; --s6:48px;
+      --s2:14px; --s3:20px; --s4:24px; --s5:32px; --s6:52px;
       --anchor-offset:120px;
 
       /* Header/Logo */
-      --header-pad:.7rem;
-      --logo-h-desktop:180px;
-      --logo-h-mobile:130px;
+      --header-pad:.6rem;
+      --logo-h-desktop:170px;
+      --logo-h-mobile:120px;
       --logo-scale-scrolled:.9;
     }
 
@@ -35,122 +35,147 @@
       background:var(--brand);
       color:var(--text);
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      line-height:1.55;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    h1,h2,h3{color:var(--gold); font-weight:600; line-height:1.2; margin:0 0 .75rem}
-    p{margin:0 0 1rem}
-    a{color:var(--mint); text-decoration:none; transition:.25s}
-    a:hover{opacity:.9}
-    ul{padding-left:1.1rem; margin:0 0 1rem}
-    .container{width:min(var(--maxw),92vw); margin-inline:auto}
 
-    /* ===== HEADER ===== */
+    /* Tipografia e links */
+    h1,h2,h3{
+      color:var(--gold); font-weight:600; line-height:1.2; margin:0 0 .6rem;
+      letter-spacing:.2px;
+    }
+    h2{ font-size:clamp(1.25rem, 2.2vw, 1.6rem) }
+    h3{ font-size:clamp(1.05rem, 1.8vw, 1.25rem) }
+    p{ margin:0 0 1rem; font-size:clamp(.98rem,1.2vw,1.05rem) }
+    ul{ margin:.2rem 0 1rem; padding-left:1.1rem }
+    li{ margin:.3rem 0 }
+    a{ color:var(--mint); text-decoration:none; transition:.25s }
+    a:hover{ opacity:.9 }
+
+    .container{ width:min(var(--maxw), 92vw); margin-inline:auto }
+
+    /* ===== Header (estável, sem “tremor”) ===== */
     header{
       position:sticky; top:0; z-index:30;
       background:color-mix(in srgb, var(--brand) 96%, #000 0%);
-      color:#fff; border-bottom:1px solid rgba(255,255,255,.15);
+      color:#fff; border-bottom:1px solid rgba(255,255,255,.14);
       backdrop-filter:saturate(150%) blur(6px);
       transition:box-shadow .2s ease;
     }
     .nav{
       display:grid; row-gap:.35rem; padding:var(--header-pad) 0;
     }
+    /* Desktop: [nome] [logo] na primeira linha; menu central abaixo do nome */
     @media (min-width:901px){
       .nav{
-        grid-template-columns: 1fr auto;    /* [texto/menu] [logo] */
+        grid-template-columns: 1fr auto;
         grid-template-areas:
           "brand logo"
           "nav   logo";
       }
     }
+    /* Mobile: nome + logo; botão + menu em linhas próprias */
     @media (max-width:900px){
       .nav{
-        grid-template-columns: 1fr auto;    /* nome + logo */
+        grid-template-columns: 1fr auto;
         grid-template-areas:
           "brand logo"
           "menu  menu"
           "nav   nav";
       }
     }
+
+    /* Nome + CRP centralizados e com linhas mais próximas */
     .brand-info{
       grid-area:brand; text-align:center; color:#fff;
-      display:flex; flex-direction:column; gap:.06rem; line-height:1.1;
+      display:flex; flex-direction:column; gap:.1rem; line-height:1.1;
       justify-self:center;
     }
-    .brand-info b{font-weight:800; letter-spacing:.2px; font-size:clamp(1.05rem,2vw,1.35rem)}
-    .brand-info small{opacity:.96; font-size:clamp(.9rem,1.6vw,1rem)}
-    .logo-wrap{grid-area:logo; justify-self:end}
+    .brand-info b{
+      font-weight:800;
+      font-size:clamp(1.08rem, 2vw, 1.35rem);
+      letter-spacing:.2px;
+    }
+    .brand-info small{
+      opacity:.96; font-size:clamp(.92rem,1.6vw,1rem);
+    }
+
+    .logo-wrap{ grid-area:logo; justify-self:end }
     .brand-logo{
       height:var(--logo-h-desktop); width:auto; display:block;
       transform-origin:right center; transition:transform .2s ease;
       filter:drop-shadow(0 4px 12px rgba(0,0,0,.15));
     }
-    header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.25)}
-    header.scrolled .brand-logo{transform:scale(var(--logo-scale-scrolled))}
+    header.scrolled{ box-shadow:0 8px 24px rgba(0,0,0,.25) }
+    header.scrolled .brand-logo{ transform:scale(var(--logo-scale-scrolled)) }
 
     /* Menu */
-    .menu-toggle{display:none}
+    .menu-toggle{ display:none }
     .menu-btn{
       grid-area:menu; justify-self:center; display:none;
       background:var(--gold); color:var(--card);
       border:none; border-radius:8px; padding:10px 20px; font-weight:700; cursor:pointer; transition:.25s;
     }
-    .menu-btn:hover{background:var(--mint); color:var(--brand)}
-    nav{grid-area:nav; justify-self:center; width:100%}
-    nav ul{display:flex; justify-content:center; gap:12px; list-style:none; margin:0; padding:6px 0; flex-wrap:wrap}
-    nav a{color:#fff; font-weight:600; padding:.35rem .6rem; border-radius:8px; position:relative}
+    .menu-btn:hover{ background:var(--mint); color:var(--brand) }
+
+    nav{ grid-area:nav; justify-self:center; width:100% }
+    nav ul{
+      display:flex; justify-content:center; gap:10px;
+      list-style:none; margin:0; padding:6px 0; flex-wrap:wrap;
+    }
+    nav a{
+      color:#fff; font-weight:600; padding:.35rem .6rem; border-radius:8px; position:relative
+    }
     nav a::after{
       content:""; position:absolute; left:.55rem; right:.55rem; bottom:.12rem; height:2px;
-      background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px;
+      background:var(--gold); transform:scaleX(0); transform-origin:left;
+      transition:transform .18s ease; border-radius:2px;
     }
-    nav a:hover::after{transform:scaleX(1)}
+    nav a:hover::after{ transform:scaleX(1) }
+
     @media (max-width:900px){
-      .menu-btn{display:inline-flex; align-items:center; gap:.4rem}
-      .menu-toggle:not(:checked) ~ nav{display:none}
-      .menu-toggle:checked ~ nav{display:block}
+      .menu-btn{ display:inline-flex; align-items:center; gap:.4rem }
+      .menu-toggle:not(:checked) ~ nav{ display:none }
+      .menu-toggle:checked ~ nav{ display:block }
+      .brand-logo{ height:var(--logo-h-mobile) }
     }
 
-    /* ===== SEÇÕES ===== */
-    .section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
-    /* Quadros de texto padronizados */
+    /* ===== Seções ===== */
+    .section{ padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset) }
+
+    /* Quadros de texto padronizados (aplicados em TODAS as cópias de texto) */
     .section-box{
       background:var(--card); color:var(--text);
       border-radius:var(--radius); padding:var(--s4); box-shadow:var(--shadow);
     }
+    .section-box p:last-child{ margin-bottom:0 }
 
-    /* Grades */
+    /* Grades equilibradas */
     .grid-2{
       display:grid; gap:var(--s4);
-      grid-template-columns:1fr 1fr;
-      align-items:stretch;
+      grid-template-columns:1fr 1fr; align-items:stretch;
     }
-    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} }
+    @media (max-width:900px){ .grid-2{ grid-template-columns:1fr } }
 
     .grid-3{
       display:grid; gap:var(--s4);
-      grid-template-columns:repeat(3,1fr);
-      align-items:stretch;
+      grid-template-columns:repeat(3,1fr); align-items:stretch;
     }
-    @media (max-width:900px){ .grid-3{grid-template-columns:1fr} }
+    @media (max-width:900px){ .grid-3{ grid-template-columns:1fr } }
 
-    /* Blocos de mídia (imagens) — sem “caixa” extra */
+    /* Mídia: sem moldura; proporção controlada e consistente */
     .media-frame{
-      border-radius:var(--radius);
-      overflow:hidden;
-      /* Altura mínima consistente no desktop para equilibrar com o texto */
-      min-height:420px;
-      background:#0f5b5d; /* fallback sutil quando a imagem ainda não carregou */
+      border-radius:var(--radius); overflow:hidden; background:#0f5b5d;
+      /* equilíbrio de altura com texto ao lado */
+      aspect-ratio: 4 / 3; /* desktop */
+      display:block;
     }
-    /* Ajuste de altura em telas menores */
-    @media (max-width:900px){ .media-frame{min-height:280px} }
-
-    .cover-img{
-      width:100%; height:100%;
-      object-fit:cover; display:block;
+    /* Mobile: um pouco mais baixo pra não “pesar” */
+    @media (max-width:900px){
+      .media-frame{ aspect-ratio: 3 / 2 }
     }
-
-    /* TEXTO das seções: respiro consistente */
-    .section-box p:last-child{margin-bottom:0}
+    .cover-img{ width:100%; height:100%; object-fit:cover; display:block }
 
     /* Botões */
     .btn{
@@ -158,29 +183,31 @@
       border:none; border-radius:8px; padding:10px 20px; font-weight:700;
       min-width:180px; text-align:center; transition:.25s; text-decoration:none;
     }
-    .btn:hover{background:var(--mint); color:var(--brand)}
-    .mini-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:.75rem; justify-content:center}
+    .btn:hover{ background:var(--mint); color:var(--brand) }
+    .mini-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:.75rem; justify-content:center }
 
-    /* Ícones sociais */
-    .social{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px}
-    .social a{display:inline-flex; width:52px; height:52px; border-radius:12px; overflow:hidden}
+    /* Ícones de contato */
+    .social{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px }
+    .social a{ display:inline-flex; width:52px; height:52px; border-radius:12px; overflow:hidden }
 
     /* Rodapé */
     footer{
       background:var(--brand-2); color:#fff;
-      border-top:1px solid rgba(255,255,255,.15);
+      border-top:1px solid rgba(255,255,255,.14);
       padding:2rem 0;
     }
-    .footer-content{display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:1rem}
-    .footer-text{text-align:center}
-    .footer-logo{height:var(--logo-h-desktop); width:auto; display:block; filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))}
-    @media (max-width:900px){ .footer-logo{height:var(--logo-h-mobile)} }
+    .footer-content{ display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:1rem }
+    .footer-text{ text-align:center }
+    .footer-logo{
+      height:var(--logo-h-desktop); width:auto; display:block;
+      filter:drop-shadow(0 4px 12px rgba(0,0,0,.15));
+    }
+    @media (max-width:900px){ .footer-logo{ height:var(--logo-h-mobile) } }
 
-    /* Finos */
-    .muted{opacity:.9}
-    .grid-3 > .section-box{display:flex; flex-direction:column}
-    .grid-3 > .section-box ul{margin-bottom:1rem}
-    .grid-3 > .section-box ul li{margin-bottom:.35rem}
+    /* Acessibilidade / Motion */
+    @media (prefers-reduced-motion: reduce){
+      .brand-logo, nav a::after{ transition:none }
+    }
   </style>
 </head>
 <body>
@@ -192,16 +219,16 @@
         <small>Psicóloga · CRP 04/30866</small>
       </div>
 
-      <!-- mobile: botão/checkbox do menu -->
+      <!-- Mobile: botão + checkbox do menu -->
       <input id="menu" class="menu-toggle" type="checkbox" />
       <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
 
-      <!-- logo à direita -->
+      <!-- Logo à direita -->
       <div class="logo-wrap">
         <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
       </div>
 
-      <!-- navegação centralizada -->
+      <!-- Navegação centralizada -->
       <nav aria-label="principal">
         <ul>
           <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
@@ -233,7 +260,7 @@
     <section id="sobre" class="section">
       <div class="container grid-2">
         <div class="media-frame">
-          <img class="cover-img" src="Laura-avatar-512.png" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
+          <img class="cover-img" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
         </div>
         <div class="section-box">
           <h2>Sobre mim</h2>
@@ -359,7 +386,7 @@
     </section>
   </main>
 
-  <!-- ===== RODAPÉ ===== -->
+  <!-- ===== Rodapé ===== -->
   <footer>
     <div class="container footer-content">
       <div class="footer-text">© <span id="year"></span> Laura Sathler · Psicóloga · CRP 04/30866</div>
