@@ -7,22 +7,23 @@
   <meta name="description" content="Psicoterapia humanista-existencial. Espaço de escuta, acolhimento e reflexão. Agende sua sessão com Laura Sathler, CRP 04/30866.">
   <style>
     :root{
-      /* Paleta solicitada */
-      --brand:#146B6D;    /* fundo da página (verde petróleo) */
-      --brand-2:#104e50;  /* variante p/ rodapé */
-      --card:#F6F5F0;     /* quadros/caixas off-white */
-      --text:#3E3E3E;     /* texto nos quadros */
-      --gold:#C6A56B;     /* botões, títulos */
-      --mint:#B5E0DC;     /* hover/links e detalhes */
+      /* Paleta */
+      --brand:#146B6D;     /* fundo principal */
+      --brand-2:#104E50;   /* rodapé */
+      --card:#F6F5F0;      /* quadros de texto */
+      --text:#3E3E3E;      /* texto */
+      --gold:#C6A56B;      /* títulos/botões */
+      --mint:#B5E0DC;      /* hover/links */
 
+      /* Layout */
+      --maxw:1080px;
       --radius:12px;
       --shadow:0 2px 8px rgba(0,0,0,.10);
-      --maxw:1080px;
-      --s4:24px; --s6:48px;
+      --s3:20px; --s4:24px; --s6:48px;
       --anchor-offset:120px;
-      --header-pad:.7rem;
 
-      /* logo maior (topo e rodapé) */
+      /* Header/Logo */
+      --header-pad:.7rem;
       --logo-h-desktop:180px;
       --logo-h-mobile:130px;
       --logo-scale-scrolled:.9;
@@ -31,16 +32,16 @@
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0}
     body{
-      background-color:var(--brand);
+      background:var(--brand);
       color:var(--text);
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      line-height:1.6;
+      line-height:1.55;
     }
-
-    /* Tipografia / cores gerais */
     h1,h2,h3{color:var(--gold); font-weight:600; line-height:1.2; margin:0 0 .75rem}
-    a{color:var(--mint); text-decoration:none; transition:.3s}
+    p{margin:0 0 1rem}
+    a{color:var(--mint); text-decoration:none; transition:.25s}
     a:hover{opacity:.9}
+    ul{padding-left:1.1rem; margin:0 0 1rem}
     .container{width:min(var(--maxw),92vw); margin-inline:auto}
 
     /* ===== HEADER ===== */
@@ -49,15 +50,14 @@
       background:color-mix(in srgb, var(--brand) 96%, #000 0%);
       color:#fff; border-bottom:1px solid rgba(255,255,255,.15);
       backdrop-filter:saturate(150%) blur(6px);
-      transition: box-shadow .2s ease;
+      transition:box-shadow .2s ease;
     }
-    /* Grid do topo: nome/CRP central em cima, menu central embaixo, logo à direita */
     .nav{
-      display:grid; align-items:center; row-gap:.35rem; padding:var(--header-pad) 0;
+      display:grid; row-gap:.35rem; padding:var(--header-pad) 0;
     }
     @media (min-width:901px){
       .nav{
-        grid-template-columns: 1fr auto;    /* [coluna de texto/menu] [logo] */
+        grid-template-columns: 1fr auto;    /* [texto/menu] [logo] */
         grid-template-areas:
           "brand logo"
           "nav   logo";
@@ -65,22 +65,20 @@
     }
     @media (max-width:900px){
       .nav{
-        grid-template-columns: 1fr auto;    /* nome e logo lado a lado */
+        grid-template-columns: 1fr auto;    /* nome + logo */
         grid-template-areas:
           "brand logo"
           "menu  menu"
           "nav   nav";
       }
     }
-
     .brand-info{
       grid-area:brand; text-align:center; color:#fff;
-      display:flex; flex-direction:column; gap:.02rem; line-height:1.1; /* linhas mais “juntas” */
+      display:flex; flex-direction:column; gap:.06rem; line-height:1.1;
       justify-self:center;
     }
     .brand-info b{font-weight:800; letter-spacing:.2px; font-size:clamp(1.05rem,2vw,1.35rem)}
-    .brand-info small{opacity:.95; font-size:clamp(.9rem,1.6vw,1rem)}
-
+    .brand-info small{opacity:.96; font-size:clamp(.9rem,1.6vw,1rem)}
     .logo-wrap{grid-area:logo; justify-self:end}
     .brand-logo{
       height:var(--logo-h-desktop); width:auto; display:block;
@@ -94,45 +92,71 @@
     .menu-toggle{display:none}
     .menu-btn{
       grid-area:menu; justify-self:center; display:none;
-      background:var(--gold); color:var(--card); border:none; border-radius:8px;
-      padding:10px 20px; font-weight:700; cursor:pointer; transition:.3s;
+      background:var(--gold); color:var(--card);
+      border:none; border-radius:8px; padding:10px 20px; font-weight:700; cursor:pointer; transition:.25s;
     }
     .menu-btn:hover{background:var(--mint); color:var(--brand)}
     nav{grid-area:nav; justify-self:center; width:100%}
-    nav ul{display:flex; justify-content:center; flex-wrap:wrap; gap:12px; list-style:none; margin:0; padding:6px 0}
-    nav a{color:#fff; font-weight:600; padding:.4rem .6rem; border-radius:10px; position:relative}
+    nav ul{display:flex; justify-content:center; gap:12px; list-style:none; margin:0; padding:6px 0; flex-wrap:wrap}
+    nav a{color:#fff; font-weight:600; padding:.35rem .6rem; border-radius:8px; position:relative}
     nav a::after{
-      content:""; position:absolute; left:.6rem; right:.6rem; bottom:.15rem; height:2px;
+      content:""; position:absolute; left:.55rem; right:.55rem; bottom:.12rem; height:2px;
       background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px;
     }
     nav a:hover::after{transform:scaleX(1)}
-    /* Mobile menu em acordeão (não sobrepõe conteúdo) */
     @media (max-width:900px){
       .menu-btn{display:inline-flex; align-items:center; gap:.4rem}
       .menu-toggle:not(:checked) ~ nav{display:none}
       .menu-toggle:checked ~ nav{display:block}
     }
 
-    /* ===== Seções / Quadros ===== */
+    /* ===== SEÇÕES ===== */
     .section{padding:var(--s6) 0; scroll-margin-top:var(--anchor-offset)}
+    /* Quadros de texto padronizados */
     .section-box{
       background:var(--card); color:var(--text);
       border-radius:var(--radius); padding:var(--s4); box-shadow:var(--shadow);
     }
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); align-items:stretch}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4)}
-    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr} }
 
-    /* Foto grande preenchendo o quadro (Sobre mim) */
-    .photo-box{padding:0; overflow:hidden}
-    .photo-fill{width:100%; height:100%; min-height:360px; object-fit:cover; display:block; border-radius:var(--radius)}
-    @media (max-width:900px){ .photo-fill{min-height:280px} }
+    /* Grades */
+    .grid-2{
+      display:grid; gap:var(--s4);
+      grid-template-columns:1fr 1fr;
+      align-items:stretch;
+    }
+    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} }
+
+    .grid-3{
+      display:grid; gap:var(--s4);
+      grid-template-columns:repeat(3,1fr);
+      align-items:stretch;
+    }
+    @media (max-width:900px){ .grid-3{grid-template-columns:1fr} }
+
+    /* Blocos de mídia (imagens) — sem “caixa” extra */
+    .media-frame{
+      border-radius:var(--radius);
+      overflow:hidden;
+      /* Altura mínima consistente no desktop para equilibrar com o texto */
+      min-height:420px;
+      background:#0f5b5d; /* fallback sutil quando a imagem ainda não carregou */
+    }
+    /* Ajuste de altura em telas menores */
+    @media (max-width:900px){ .media-frame{min-height:280px} }
+
+    .cover-img{
+      width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+
+    /* TEXTO das seções: respiro consistente */
+    .section-box p:last-child{margin-bottom:0}
 
     /* Botões */
     .btn{
       display:inline-block; background:var(--gold); color:var(--card);
       border:none; border-radius:8px; padding:10px 20px; font-weight:700;
-      min-width:180px; text-align:center; transition:.3s; text-decoration:none;
+      min-width:180px; text-align:center; transition:.25s; text-decoration:none;
     }
     .btn:hover{background:var(--mint); color:var(--brand)}
     .mini-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:.75rem; justify-content:center}
@@ -140,18 +164,22 @@
     /* Ícones sociais */
     .social{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px}
     .social a{display:inline-flex; width:52px; height:52px; border-radius:12px; overflow:hidden}
-    .social svg{width:52px; height:52px; display:block}
 
     /* Rodapé */
-    footer{background:var(--brand-2); color:#fff; border-top:1px solid rgba(255,255,255,.15); padding:2rem 0}
+    footer{
+      background:var(--brand-2); color:#fff;
+      border-top:1px solid rgba(255,255,255,.15);
+      padding:2rem 0;
+    }
     .footer-content{display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:1rem}
     .footer-text{text-align:center}
     .footer-logo{height:var(--logo-h-desktop); width:auto; display:block; filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))}
     @media (max-width:900px){ .footer-logo{height:var(--logo-h-mobile)} }
 
-    /* Ajustes finos */
+    /* Finos */
     .muted{opacity:.9}
-    .grid-3 > .section-box{display:flex; flex-direction:column; height:100%}
+    .grid-3 > .section-box{display:flex; flex-direction:column}
+    .grid-3 > .section-box ul{margin-bottom:1rem}
     .grid-3 > .section-box ul li{margin-bottom:.35rem}
   </style>
 </head>
@@ -164,16 +192,16 @@
         <small>Psicóloga · CRP 04/30866</small>
       </div>
 
-      <!-- Mobile: botão/checkbox do menu -->
+      <!-- mobile: botão/checkbox do menu -->
       <input id="menu" class="menu-toggle" type="checkbox" />
       <label for="menu" class="menu-btn" aria-label="Abrir menu">☰ Menu</label>
 
-      <!-- Logo à direita -->
+      <!-- logo à direita -->
       <div class="logo-wrap">
         <img src="Logomarca.png" alt="Logomarca Laura Sathler" class="brand-logo" onerror="this.style.display='none'">
       </div>
 
-      <!-- Navegação central -->
+      <!-- navegação centralizada -->
       <nav aria-label="principal">
         <ul>
           <li><a href="#psicoterapia">O que é Psicoterapia</a></li>
@@ -187,7 +215,7 @@
   </header>
 
   <main>
-    <!-- ===== O que é Psicoterapia? (texto ESQ, imagem DIR) ===== -->
+    <!-- ===== Psicoterapia (TEXTO ESQ | IMAGEM DIR) ===== -->
     <section id="psicoterapia" class="section">
       <div class="container grid-2">
         <div class="section-box">
@@ -195,19 +223,19 @@
           <p>A psicoterapia é um espaço seguro de escuta e acolhimento, onde você pode falar livremente sobre o que sente e pensa, sem julgamentos ou expectativas impostas. É um processo que convida ao autoconhecimento, ajudando a reconhecer sua história, compreender as próprias dores, cuidar de si e fortalecer o que traz sentido e vitalidade à vida.</p>
           <p>Esse caminho nem sempre é simples; ele exige presença e coragem para olhar para dentro. Mas também é um espaço de encontro, clareza e afeto, que abre possibilidades para escolhas mais conscientes e formas mais autênticas de viver.</p>
         </div>
-        <div class="section-box">
-          <img class="img-cover" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
+        <div class="media-frame">
+          <img class="cover-img" src="Terapeuta-Paciente.png" alt="Terapeuta e paciente em diálogo acolhedor" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- ===== Sobre mim (FOTO ESQ grande preenchendo, TEXTO DIR) ===== -->
+    <!-- ===== Sobre mim (IMAGEM ESQ | TEXTO DIR) ===== -->
     <section id="sobre" class="section">
-      <div class="container grid-2 about">
-        <div class="section-box photo-box media">
-          <img class="photo-fill" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
+      <div class="container grid-2">
+        <div class="media-frame">
+          <img class="cover-img" src="Laura.jpeg" alt="Foto de Laura Sathler" loading="lazy" decoding="async">
         </div>
-        <div class="section-box about-text">
+        <div class="section-box">
           <h2>Sobre mim</h2>
           <p>Sou <strong>Laura Sathler</strong>, psicóloga (CRP 04/30866), formada pela PUC Minas e com mais de 10 anos de experiência clínica. Minha trajetória é movida pelo desejo de estar com as pessoas em seus processos mais autênticos, oferecendo um espaço seguro e de confiança.</p>
           <p>Minha prática se baseia na abordagem <strong>humanista-existencial</strong>, que acredita na singularidade de cada ser humano e no poder do encontro verdadeiro. No consultório, valorizo o diálogo aberto, a escuta atenta e a presença genuína, porque acredito que é na relação que novas formas de viver e sentir podem florescer.</p>
@@ -220,7 +248,7 @@
     <!-- ===== Especialidades ===== -->
     <section id="especialidades" class="section">
       <div class="container">
-        <div class="section-box" style="text-align:center; margin-bottom:24px">
+        <div class="section-box" style="text-align:center; margin-bottom:var(--s3)">
           <h2>Especialidades de atendimento</h2>
           <p class="muted">Mais do que diagnósticos, trabalho com histórias. Abaixo, situações comuns que podem indicar que é hora de buscar ajuda.</p>
         </div>
@@ -266,7 +294,7 @@
           </div>
         </div>
 
-        <div class="section-box" style="text-align:center; margin-top:24px">
+        <div class="section-box" style="text-align:center; margin-top:var(--s3)">
           <strong>Não precisa enfrentar tudo sozinho(a).</strong>
           <p class="muted" style="margin:.5rem 0 1rem">Se você se identificou com algum ponto, um primeiro encontro pode trazer clareza sobre próximos passos.</p>
           <div class="mini-cta">
@@ -343,13 +371,13 @@
     // Ano dinâmico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sombra do topo ao rolar (sem alterar altura -> evita “tremor”)
+    // Sombra do topo ao rolar (sem alterar altura)
     const header = document.getElementById('topbar');
     function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); }
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
 
-    // Offset das âncoras (hash) baseado na altura real do topo
+    // Offset das âncoras conforme altura real do header
     function setOffset(){
       const h = header.offsetHeight;
       document.documentElement.style.setProperty('--anchor-offset', h + 'px');
@@ -357,7 +385,7 @@
     window.addEventListener('load', setOffset);
     window.addEventListener('resize', setOffset);
 
-    // Fecha o menu (mobile) após clique e recalcula offset
+    // Fecha menu mobile ao clicar num link e recalcula offset
     document.querySelectorAll('nav a').forEach(a=>{
       a.addEventListener('click',()=>{
         const cb=document.getElementById('menu');
